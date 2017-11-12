@@ -5,14 +5,19 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.TextView;
 
 import com.example.wangqian.happinesshunter.entity.Record;
 import com.example.wangqian.happinesshunter.service.DemoRecordService;
 import com.example.wangqian.happinesshunter.service.RecordService;
+import com.github.rahatarmanahmed.cpv.CircularProgressView;
 import com.huaban.analysis.jieba.JiebaSegmenter;
+
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,16 +27,24 @@ import java.util.Map;
 public class WordCloudActivity extends AppCompatActivity {
 
     private WebView wordCloudWebView;
+    private CircularProgressView progressView;
+    private TextView progressTextView;
 
+    // use dependency injection if possible
     private RecordService recordService;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word_cloud);
 
-
         initWebView();
+        initProjressView();
+    }
 
+    private void initProjressView() {
+        progressView = (CircularProgressView) findViewById(R.id.loading_word_cloud_progress_view);
+        progressView.startAnimation();
+        progressTextView = (TextView) findViewById(R.id.loading_word_cloud_text_view);
     }
 
 
@@ -54,11 +67,21 @@ public class WordCloudActivity extends AppCompatActivity {
                 recordService = new DemoRecordService();
                 List<Record> recordList = recordService.getRecords();
                 Map<String, Integer> wordValueMap = new HashMap<>();
+                JiebaSegmenter segmenter = HappinessHunterApplication.jiebaSegmenter;
+
+                while (segmenter == null) {
+                    segmenter = HappinessHunterApplication.jiebaSegmenter;
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
 
                 for (Record record: recordList) {
                     int strength = record.getStrength();
                     String stripedContent = record.getContent().replaceAll("\\p{P}" , " ");
-                    List<String> wordList = HappinessHunterApplication.jiebaSegmenter.sentenceProcess(stripedContent);
+                    List<String> wordList = segmenter.sentenceProcess(stripedContent);
                     for (String word: wordList) {
                         if (wordValueMap.containsKey(word)) {
                             int value = wordValueMap.get(word);
@@ -81,6 +104,8 @@ public class WordCloudActivity extends AppCompatActivity {
 
                     @Override
                     public void run() {
+                        progressView.setVisibility(View.INVISIBLE);
+                        progressTextView.setVisibility(View.INVISIBLE);
                         wordCloudWebView.loadUrl("javascript:drawWordCloud(" + "'" + rawDataBuilder.toString() + "'" + ")");
                     }
                 });

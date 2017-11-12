@@ -5,11 +5,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.wangqian.happinesshunter.service.RecordService;
+
 public class WordRecordListActivity extends AppCompatActivity {
 
     public static String wordSelectedAsParams = "wordSelectedAsParams";
 
     private TextView textView;
+
+    // use dependency injection if possible
+    private RecordService recordService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

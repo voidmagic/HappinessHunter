@@ -30,6 +30,7 @@ dependencies {
     })
 
 
+    compile 'com.github.rahatarmanahmed:circularprogressview:2.5.0'
 
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'

@@ -12,6 +12,11 @@ public class HappinessHunterApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        initSegmenter();
+    }
+
+
+    private void initSegmenter() {
         new Thread(new Runnable() {
             @Override
             public void run() {

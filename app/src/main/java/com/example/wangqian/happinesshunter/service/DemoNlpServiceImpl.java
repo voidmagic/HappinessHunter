@@ -1,8 +1,24 @@
 package com.example.wangqian.happinesshunter.service;
 
-/**
- * Created by wangqian on 2017/11/12.
- */
+import java.util.List;
 
-public class DemoNlpServiceImpl {
+
+public class DemoNlpServiceImpl implements NlpService {
+
+    
+
+    @Override
+    public List<String> segmentSentence(String sentence) {
+        return null;
+    }
+
+    @Override
+    public int emotionStrength(String sentence) {
+        return 0;
+    }
+
+    @Override
+    public int integrity(String sentence) {
+        return 0;
+    }
 }
