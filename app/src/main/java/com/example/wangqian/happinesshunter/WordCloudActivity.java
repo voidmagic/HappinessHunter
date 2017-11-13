@@ -5,20 +5,28 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.AdapterView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.wangqian.happinesshunter.entity.Record;
 import com.example.wangqian.happinesshunter.service.DemoRecordService;
 import com.example.wangqian.happinesshunter.service.RecordService;
+import com.flyco.dialog.entity.DialogMenuItem;
+import com.flyco.dialog.listener.OnOperItemClickL;
+import com.flyco.dialog.widget.NormalListDialog;
 import com.github.rahatarmanahmed.cpv.CircularProgressView;
 import com.huaban.analysis.jieba.JiebaSegmenter;
 
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -100,6 +108,7 @@ public class WordCloudActivity extends AppCompatActivity {
                     rawDataBuilder.append(entry.getValue()*10000);
                     rawDataBuilder.append(",");
                 }
+                Log.i("tagsss", rawDataBuilder.toString());
                 runOnUiThread(new Runnable() {
 
                     @Override
@@ -121,11 +130,30 @@ public class WordCloudActivity extends AppCompatActivity {
 
             @Override
             public void run() {
-                Intent intent = new Intent(WordCloudActivity.this, WordRecordListActivity.class);
-                intent.putExtra(WordRecordListActivity.wordSelectedAsParams, text);
-                startActivity(intent);
+                String[] itemList = buildDialogMenuItems(text);
+                NormalListDialog dialog = new NormalListDialog(WordCloudActivity.this, itemList)
+                        .title("\"" + text + "\"相关故事")
+                        .dividerHeight(0.5f);
+
+
+                dialog.setOnOperItemClickL(new OnOperItemClickL() {
+                    @Override
+                    public void onOperItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Toast.makeText(WordCloudActivity.this, id + "  " + position, Toast.LENGTH_SHORT).show();
+                    }
+                });
+                dialog.show();
             }
         });
+    }
+
+    public String[] buildDialogMenuItems(String word) {
+        List<Record> recordList = recordService.getRecords(word);
+        List<String> strings = new ArrayList<>();
+        for (Record record: recordList) {
+            strings.add(record.getContent());
+        }
+        return strings.toArray(new String[0]);
     }
 
     @JavascriptInterface
