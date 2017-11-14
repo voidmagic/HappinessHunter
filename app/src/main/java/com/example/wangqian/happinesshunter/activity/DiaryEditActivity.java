@@ -177,13 +177,11 @@ public class DiaryEditActivity extends AppCompatActivity implements TextWatcher{
 
                 final int textFull = nlpService.integrity(s.toString());
                 final int emotion = nlpService.emotionStrength(s.toString());
-
-
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        full.setText(textFull);
-                        emotionStength.setText(emotion);
+                        full.setText(String.valueOf(textFull));
+                        emotionStength.setText(String.valueOf(emotion));
                         StringBuffer str;
                         if (s.length() < 15) {
                             str = new StringBuffer("输入字数为" + s.length() + "");
@@ -218,11 +216,10 @@ public class DiaryEditActivity extends AppCompatActivity implements TextWatcher{
                             }
                         }
                         tipText.setText(str);
-
                     }
                 });
             }
-        });
+        }).start();
 
 
 
