@@ -6,6 +6,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.wangqian.happinesshunter.db.DBOpenHelper;
 import com.example.wangqian.happinesshunter.entity.Diary;
@@ -111,6 +112,7 @@ public class DiaryDao {
 			   diary.setId(id);
 		   }
 	   }
+       cursor.close();
 	   return diary;
    }
 
@@ -118,18 +120,18 @@ public class DiaryDao {
 	   List<Diary> diaryList = new ArrayList<>();
 
 	   Cursor cursor = db.query("diary", null, "content LIKE ?", new String[]{"%" + word + "%"},null, null, null);
-
-	   if (cursor != null) {
-		   if (cursor.moveToFirst()) {
-			   int id = cursor.getInt(cursor.getColumnIndex("_id"));
-			   String title = cursor.getString(cursor.getColumnIndex("title"));
-			   String content = cursor.getString(cursor.getColumnIndex("content"));
-			   String time = cursor.getString(cursor.getColumnIndex("createtime"));
-			   Integer happy  = cursor.getInt(cursor.getColumnIndex("happy"));
-			   Diary diary = new Diary(id,title, content,time,happy);
-			   diaryList.add(diary);
-		   }
+	   if (cursor.moveToFirst()) {
+           do {
+               int id = cursor.getInt(cursor.getColumnIndex("_id"));
+               String title = cursor.getString(cursor.getColumnIndex("title"));
+               String content = cursor.getString(cursor.getColumnIndex("content"));
+               String time = cursor.getString(cursor.getColumnIndex("createtime"));
+               Integer happy  = cursor.getInt(cursor.getColumnIndex("happy"));
+               Diary diary = new Diary(id,title, content,time,happy);
+               diaryList.add(diary);
+           } while (cursor.moveToNext());
 	   }
+	   cursor.close();
 
 	   return diaryList;
    }

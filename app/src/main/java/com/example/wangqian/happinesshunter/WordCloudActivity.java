@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
@@ -74,10 +75,8 @@ public class WordCloudActivity extends AppCompatActivity {
                 List<Diary> recordList = diaryDao.getAllDiariesData();
                 Map<String, Integer> wordValueMap = new HashMap<>();
 
-
-
                 for (Diary diary: recordList) {
-                    int strength = diary.getHappy();
+                    int strength = diary.getHappy()+1;
                     String stripedContent = diary.getContent().replaceAll("\\p{P}" , " ");
                     List<String> wordList = nlpService.segmentSentence(stripedContent);
                     for (String word: wordList) {
@@ -95,7 +94,7 @@ public class WordCloudActivity extends AppCompatActivity {
                 for (Map.Entry<String, Integer> entry: wordValueMap.entrySet()) {
                     rawDataBuilder.append(entry.getKey());
                     rawDataBuilder.append(":");
-                    rawDataBuilder.append(entry.getValue()*10000);
+                    rawDataBuilder.append(entry.getValue());
                     rawDataBuilder.append(",");
                 }
                 runOnUiThread(new Runnable() {
