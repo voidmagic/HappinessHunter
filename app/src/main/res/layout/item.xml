@@ -33,6 +33,7 @@
             android:layout_marginLeft="18dp"
             android:layout_marginRight="18dp"
             android:maxLines="1"
+            android:textColor="@color/text_color"
             android:text="dksfjsk"
             android:textSize="22sp" />
     </LinearLayout>
@@ -42,6 +43,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="dksklf"
+
+        android:textColor="@color/text_color"
         android:layout_margin="14dp"
         android:textSize="18sp" />
 

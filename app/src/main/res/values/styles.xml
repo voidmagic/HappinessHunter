@@ -1,28 +1,31 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
+        <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
+    <!--</style>-->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@android:color/white</item>
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
     </style>
-
-    <style name="CustomActionBarStyle" parent="@android:style/Widget.DeviceDefault.Light.ActionBar">
-        <item name="android:contentInsetEnd">0dp</item><!--右边距为0-->
-        <item name="android:contentInsetStart">0dp</item><!--左边距为0-->
-        <item name="android:layout_margin">0dp</item>
-    </style>
-    　　<!-- 自定义的Theme-->
-    <style name="CustomTheme" parent="@android:style/Theme.DeviceDefault.Light.DarkActionBar">
-        <item name="android:colorPrimary">@color/colorPrimary</item>
-        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="android:colorAccent">@color/colorAccent</item>
-        <item name="android:actionBarSize">48dp</item><!--设置ActionBar的高度-->
-        <item name="android:actionBarStyle">@style/CustomActionBarStyle</item>
-        <item name="android:statusBarColor">@color/me_blank_grey</item><!--效果和colorPrimary一样-->
-        <!--<item name="android:windowLightStatusBar">true</item>&lt;!&ndash;设置StatusBar上Icon高亮&ndash;&gt;-->
-        <item name="android:windowTranslucentNavigation">false</item>
-    </style>
+    <!--<style name="CustomActionBarStyle" parent="@android:style/Widget.DeviceDefault.Light.ActionBar">-->
+        <!--<item name="android:contentInsetEnd">0dp</item>&lt;!&ndash;右边距为0&ndash;&gt;-->
+        <!--<item name="android:contentInsetStart">0dp</item>&lt;!&ndash;左边距为0&ndash;&gt;-->
+        <!--<item name="android:layout_margin">0dp</item>-->
+    <!--</style>-->
+    <!--　　&lt;!&ndash; 自定义的Theme&ndash;&gt;-->
+    <!--<style name="CustomTheme" parent="@android:style/Theme.DeviceDefault.Light.DarkActionBar">-->
+        <!--<item name="android:colorPrimary">@color/colorPrimary</item>-->
+        <!--<item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--<item name="android:colorAccent">@color/colorAccent</item>-->
+        <!--<item name="android:actionBarSize">48dp</item>&lt;!&ndash;设置ActionBar的高度&ndash;&gt;-->
+        <!--<item name="android:actionBarStyle">@style/CustomActionBarStyle</item>-->
+        <!--<item name="android:statusBarColor">@color/me_blank_grey</item>&lt;!&ndash;效果和colorPrimary一样&ndash;&gt;-->
+        <!--&lt;!&ndash;<item name="android:windowLightStatusBar">true</item>&lt;!&ndash;设置StatusBar上Icon高亮&ndash;&gt;&ndash;&gt;-->
+        <!--<item name="android:windowTranslucentNavigation">false</item>-->
+    <!--</style>-->
 
 </resources>

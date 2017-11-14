@@ -3,6 +3,7 @@
 
     <string name="button_show_word_cloud">Word Cloud</string>
     <string name="selected_word_as_param">WordSelected</string>
+    <string name="context_menu">Context menu</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="diary_add">幸福捕手</string>
