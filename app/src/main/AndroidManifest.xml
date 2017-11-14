@@ -36,10 +36,10 @@
             android:name=".activity.DiaryEditActivity" android:windowSoftInputMode="adjustPan|stateHidden"
             android:label="@string/title_activity_diary_add" >
         </activity>
-        <activity android:name=".activity.DiaryReviewActivity">
+        <activity android:name=".activity.DiaryReviewActivity"/> 
 
-        </activity>
-
+        <activity android:name=".WordCloudActivity"/>
+        <activity android:name=".WordRecordListActivity"/>
     </application>
 
 </manifest>
