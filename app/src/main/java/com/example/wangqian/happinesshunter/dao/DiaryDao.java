@@ -1,6 +1,7 @@
 package com.example.wangqian.happinesshunter.dao;
 
 
+import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -100,7 +101,7 @@ public class DiaryDao {
 	   Diary diary=null;
 	   db=dbOpenHelper.getReadableDatabase();
 	   Cursor cursor=db.query("diary", null, "_id=?", new String[]{id.toString()},null, null, null);
-	   if(cursor!=null){
+       if(cursor!=null){
 		   if(cursor.moveToFirst()){
 			   String title=cursor.getString(cursor.getColumnIndex("title"));
 			   String content=cursor.getString(cursor.getColumnIndex("content"));
@@ -112,7 +113,27 @@ public class DiaryDao {
 	   }
 	   return diary;
    }
-   
+
+   public List<Diary> getDiaryByWord(String word) {
+	   List<Diary> diaryList = new ArrayList<>();
+
+	   Cursor cursor = db.query("diary", null, "content LIKE ?", new String[]{"%" + word + "%"},null, null, null);
+
+	   if (cursor != null) {
+		   if (cursor.moveToFirst()) {
+			   int id = cursor.getInt(cursor.getColumnIndex("_id"));
+			   String title = cursor.getString(cursor.getColumnIndex("title"));
+			   String content = cursor.getString(cursor.getColumnIndex("content"));
+			   String time = cursor.getString(cursor.getColumnIndex("createtime"));
+			   Integer happy  = cursor.getInt(cursor.getColumnIndex("happy"));
+			   Diary diary = new Diary(id,title, content,time,happy);
+			   diaryList.add(diary);
+		   }
+	   }
+
+	   return diaryList;
+   }
+
    /**
     * 计算日记数量
     * @return

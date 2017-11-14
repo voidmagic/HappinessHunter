@@ -1,6 +1,7 @@
 package com.example.wangqian.happinesshunter;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,6 +12,10 @@ import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.wangqian.happinesshunter.activity.DiaryActivity;
+import com.example.wangqian.happinesshunter.activity.DiaryEditActivity;
+import com.example.wangqian.happinesshunter.dao.DiaryDao;
+import com.example.wangqian.happinesshunter.entity.Diary;
 import com.example.wangqian.happinesshunter.entity.Record;
 import com.example.wangqian.happinesshunter.service.DemoRecordService;
 import com.example.wangqian.happinesshunter.service.RecordService;
@@ -32,11 +37,13 @@ public class WordCloudActivity extends AppCompatActivity {
     private TextView progressTextView;
 
     // use dependency injection if possible
-    private RecordService recordService;
+    private DiaryDao diaryDao;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word_cloud);
+
+        diaryDao = new DiaryDao(this);
 
         initWebView();
         initProjressView();
@@ -65,8 +72,7 @@ public class WordCloudActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                recordService = new DemoRecordService();
-                List<Record> recordList = recordService.getRecords();
+                List<Diary> recordList = diaryDao.getAllDiariesData();
                 Map<String, Integer> wordValueMap = new HashMap<>();
                 JiebaSegmenter segmenter = HappinessHunterApplication.jiebaSegmenter;
 
@@ -79,9 +85,9 @@ public class WordCloudActivity extends AppCompatActivity {
                     }
                 }
 
-                for (Record record: recordList) {
-                    int strength = record.getStrength();
-                    String stripedContent = record.getContent().replaceAll("\\p{P}" , " ");
+                for (Diary diary: recordList) {
+                    int strength = diary.getHappy();
+                    String stripedContent = diary.getContent().replaceAll("\\p{P}" , " ");
                     List<String> wordList = segmenter.sentenceProcess(stripedContent);
                     for (String word: wordList) {
                         if (wordValueMap.containsKey(word)) {
@@ -122,8 +128,15 @@ public class WordCloudActivity extends AppCompatActivity {
 
             @Override
             public void run() {
-                String[] itemList = buildDialogMenuItems(text);
-                NormalListDialog dialog = new NormalListDialog(WordCloudActivity.this, itemList)
+
+                final List<Diary> diaries = diaryDao.getDiaryByWord(text);
+                List<String> strings = new ArrayList<>();
+                for (Diary diary: diaries) {
+                    strings.add(diary.getTitle());
+                }
+                String[] listString = strings.toArray(new String[0]);
+
+                NormalListDialog dialog = new NormalListDialog(WordCloudActivity.this, listString)
                         .title("\"" + text + "\"相关故事")
                         .dividerHeight(0.5f);
 
@@ -132,6 +145,11 @@ public class WordCloudActivity extends AppCompatActivity {
                     @Override
                     public void onOperItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Toast.makeText(WordCloudActivity.this, id + "  " + position, Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent();
+
+                        intent.setClass(WordCloudActivity.this, DiaryEditActivity.class);
+                        intent.putExtra("id",(int) diaries.get(position).getId());
+                        startActivity(intent);
                     }
                 });
                 dialog.show();
@@ -139,14 +157,6 @@ public class WordCloudActivity extends AppCompatActivity {
         });
     }
 
-    public String[] buildDialogMenuItems(String word) {
-        List<Record> recordList = recordService.getRecords(word);
-        List<String> strings = new ArrayList<>();
-        for (Record record: recordList) {
-            strings.add(record.getContent());
-        }
-        return strings.toArray(new String[0]);
-    }
 
     @JavascriptInterface
     public void pageLoadFinish() {
