@@ -143,6 +143,17 @@
         android:textSize="18dp"
         android:text="@string/label_content" />
 
+    <TextView
+        android:id="@+id/tips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:textSize="14dp"
+        android:text="今天有什么开心的事情咩~"
+        android:textColor="@color/text_hint"/>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -6,9 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.example.wangqian.happinesshunter.WordCloudActivity">
 
+
+
     <WebView android:id="@+id/wordCloudWebView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"/>
 
 
     <com.github.rahatarmanahmed.cpv.CircularProgressView
@@ -29,5 +32,7 @@
         android:layout_height="wrap_content" />
 
 
+    <include layout="@layout/toolbar_left"
+        />
 
 </RelativeLayout>
