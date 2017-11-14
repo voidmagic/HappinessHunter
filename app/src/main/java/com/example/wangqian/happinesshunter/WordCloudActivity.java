@@ -12,18 +12,14 @@ import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.wangqian.happinesshunter.activity.DiaryActivity;
-import com.example.wangqian.happinesshunter.activity.DiaryEditActivity;
 import com.example.wangqian.happinesshunter.activity.DiaryReviewActivity;
 import com.example.wangqian.happinesshunter.dao.DiaryDao;
 import com.example.wangqian.happinesshunter.entity.Diary;
-import com.example.wangqian.happinesshunter.entity.Record;
-import com.example.wangqian.happinesshunter.service.DemoRecordService;
-import com.example.wangqian.happinesshunter.service.RecordService;
+import com.example.wangqian.happinesshunter.service.DemoNlpServiceImpl;
+import com.example.wangqian.happinesshunter.service.NlpService;
 import com.flyco.dialog.listener.OnOperItemClickL;
 import com.flyco.dialog.widget.NormalListDialog;
 import com.github.rahatarmanahmed.cpv.CircularProgressView;
-import com.huaban.analysis.jieba.JiebaSegmenter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,6 +32,7 @@ public class WordCloudActivity extends AppCompatActivity {
     private WebView wordCloudWebView;
     private CircularProgressView progressView;
     private TextView progressTextView;
+    private NlpService nlpService;
 
     // use dependency injection if possible
     private DiaryDao diaryDao;
@@ -45,6 +42,7 @@ public class WordCloudActivity extends AppCompatActivity {
         setContentView(R.layout.activity_word_cloud);
 
         diaryDao = new DiaryDao(this);
+        nlpService = new DemoNlpServiceImpl();
 
         initWebView();
         initProjressView();
@@ -75,21 +73,13 @@ public class WordCloudActivity extends AppCompatActivity {
             public void run() {
                 List<Diary> recordList = diaryDao.getAllDiariesData();
                 Map<String, Integer> wordValueMap = new HashMap<>();
-                JiebaSegmenter segmenter = HappinessHunterApplication.jiebaSegmenter;
 
-                while (segmenter == null) {
-                    segmenter = HappinessHunterApplication.jiebaSegmenter;
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
+
 
                 for (Diary diary: recordList) {
                     int strength = diary.getHappy();
                     String stripedContent = diary.getContent().replaceAll("\\p{P}" , " ");
-                    List<String> wordList = segmenter.sentenceProcess(stripedContent);
+                    List<String> wordList = nlpService.segmentSentence(stripedContent);
                     for (String word: wordList) {
                         if (wordValueMap.containsKey(word)) {
                             int value = wordValueMap.get(word);
