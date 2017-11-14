@@ -1,23 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="68dp"
-    android:orientation="horizontal" >
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical" >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/happy"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginLeft="8dp"
+            android:src="@mipmap/a23"/>
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:maxLines="1"
+            android:text="dksfjsk"
+            android:textSize="22sp" />
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
+        android:id="@+id/content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:maxLength="8"
-        android:textSize="20sp" />
+        android:text="dksklf"
+        android:layout_margin="14dp"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/createtime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical|right"
+        android:text="dksklf"
+        android:layout_margin="4dp"
         android:gravity="right"
-        android:textSize="20sp" />
+        android:textColor="@color/text_hint"
+        android:textSize="12dp" />
 
+
+    </LinearLayout>
 </LinearLayout>

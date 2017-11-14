@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 /**
  * 数据库创建辅助类 完成数据库的创建和升级
  */
-//TODO 要求1：分析此处报错原因，修改此错误 5分
 public class DBOpenHelper extends SQLiteOpenHelper {
 	public static final String DATABASE_NAME = "diary.db";
 	public static final int DATABASE_VERSION = 1;

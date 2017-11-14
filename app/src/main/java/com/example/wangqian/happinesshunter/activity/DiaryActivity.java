@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.wangqian.happinesshunter.R;
 import com.example.wangqian.happinesshunter.WordCloudActivity;
+import com.example.wangqian.happinesshunter.adapter.DiaryAdapter;
 import com.example.wangqian.happinesshunter.dao.DiaryDao;
 import com.example.wangqian.happinesshunter.entity.Diary;
 
@@ -73,16 +74,19 @@ public class DiaryActivity extends Activity implements AdapterView.OnItemClickLi
 	 */
 	public void refreshList() {
 		diaryDao = new DiaryDao(this);
-		diaries = diaryDao.getAllDiaries();
+		//diaries = diaryDao.getAllDiaries();
 		diaryList = diaryDao.getAllDiariesData();
 		// TODO: 2017-11-13 改成 自定义adapter
 
-		startManagingCursor(diaries);
-		SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(this,
-				R.layout.item, diaries, new String[] { "title", "createtime" },
-				new int[] { R.id.title, R.id.createtime });
+		//startManagingCursor(diaries);
+//		SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(this,
+//				R.layout.item, diaries, new String[] { "title", "createtime" },
+//				new int[] { R.id.title, R.id.createtime });
+//
+//		listView.setAdapter(simpleCursorAdapter);
 
-		listView.setAdapter(simpleCursorAdapter);
+		DiaryAdapter diaryAdapter = new DiaryAdapter(this,diaryList);
+		listView.setAdapter(diaryAdapter);
 
 	}
 	public boolean onCreateOptionsMenu(Menu menu) {

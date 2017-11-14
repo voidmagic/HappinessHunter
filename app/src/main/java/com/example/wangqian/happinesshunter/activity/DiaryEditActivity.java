@@ -39,8 +39,6 @@ public class DiaryEditActivity extends Activity {
 			}
 
 		}
-		//步骤1：获取DiaryActivity传过来的数据，将选定日记的标题和内容显示在相应的文本框中 20分
-		//此处插入若干行代码
 
 	}
 	private void initViews() {
@@ -56,7 +54,7 @@ public class DiaryEditActivity extends Activity {
 
 	//单击提交日记按钮时调用的方法
 	public void addOrupdate(View view){
-	    //步骤2：完成日记更新操作 20分
+	    //步骤2：完成日记更新操作
 		Diary diary = new Diary(titleText.getText().toString(),
 				contentText.getText().toString(),
 				DateTool.getCurrentTime(),happy);
@@ -76,37 +74,37 @@ public class DiaryEditActivity extends Activity {
 			case R.id.ha1:
 				Log.e("xxxxxxxxxxxx","click 1");
 				happy = 3;
-				happy1.setImageDrawable(getResources().getDrawable(R.mipmap.a23));
-				happy2.setImageDrawable(getResources().getDrawable(R.mipmap.a11_default));
-				happy3.setImageDrawable(getResources().getDrawable(R.mipmap.a12_default));
-				happy4.setImageDrawable(getResources().getDrawable(R.mipmap.a13_default));
+				happy1.setImageResource(R.mipmap.a23);
+				happy2.setImageResource(R.mipmap.a11_default);
+				happy3.setImageResource(R.mipmap.a12_default);
+				happy4.setImageResource(R.mipmap.a13_default);
 				break;
 			case R.id.ha2:
 
 				Log.e("xxxxxxxxxxxx","click 2");
 				happy = 2;
-				happy1.setImageDrawable(getResources().getDrawable(R.mipmap.a23_default));
-				happy2.setImageDrawable(getResources().getDrawable(R.mipmap.a11));
-				happy3.setImageDrawable(getResources().getDrawable(R.mipmap.a12_default));
-				happy4.setImageDrawable(getResources().getDrawable(R.mipmap.a13_default));
+				happy1.setImageResource(R.mipmap.a23_default);
+				happy2.setImageResource(R.mipmap.a11);
+				happy3.setImageResource(R.mipmap.a12_default);
+				happy4.setImageResource(R.mipmap.a13_default);
 				break;
 			case R.id.ha3:
 
 				Log.e("xxxxxxxxxxxx","click 3");
 				happy = 1;
-				happy1.setImageDrawable(getResources().getDrawable(R.mipmap.a23_default));
-				happy2.setImageDrawable(getResources().getDrawable(R.mipmap.a11_default));
-				happy3.setImageDrawable(getResources().getDrawable(R.mipmap.a12));
-				happy4.setImageDrawable(getResources().getDrawable(R.mipmap.a13_default));
+				happy1.setImageResource(R.mipmap.a23_default);
+				happy2.setImageResource(R.mipmap.a11_default);
+				happy3.setImageResource(R.mipmap.a12);
+				happy4.setImageResource(R.mipmap.a13_default);
 				break;
 			case R.id.ha4:
 				happy = 0;
 
 				Log.e("xxxxxxxxxxxx","click 4");
-				happy1.setImageDrawable(getResources().getDrawable(R.mipmap.a23_default));
-				happy2.setImageDrawable(getResources().getDrawable(R.mipmap.a11_default));
-				happy3.setImageDrawable(getResources().getDrawable(R.mipmap.a12_default));
-				happy4.setImageDrawable(getResources().getDrawable(R.mipmap.a13));
+				happy1.setImageResource(R.mipmap.a23_default);
+				happy2.setImageResource(R.mipmap.a11_default);
+				happy3.setImageResource(R.mipmap.a12_default);
+				happy4.setImageResource(R.mipmap.a13);
 				break;
 			default:
 				break;

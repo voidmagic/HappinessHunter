@@ -3,4 +3,72 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="popup_main_background">#b0000000</color>
+    <color name="choose_eara_item_press_color">#f4f4f4</color>
+    <color name="no_color">#00000000</color>
+
+    <color name="trans">#00000000</color>
+    <color name="alertdialog_line">#c6c6c6</color>
+    <color name="actionsheet_blue">#037BFF</color>
+    <color name="actionsheet_red">#FD4A2E</color>
+    <color name="actionsheet_gray">#8F8F8F</color>
+
+    <color name="point_orange">#FF6103</color>
+    <color name="point_blue">#1E90FF</color>
+    <color name="popupwindow1">#727577</color>
+    <color name="popupwindow2">#4D5154</color>
+    <color name="reply_date_grey">#929292</color>
+    <color name="reply_content_grey">#4e586e</color>
+    <color name="login_hint">#adadad</color>
+    <color name="login_divider">#e4e4e4</color>
+
+    <color name="main_tab_divider">#757575</color>
+    <color name="main_tab_text">#757575</color>
+    <color name="main_tab_text_unable">#c3c3c3</color>
+    <color name="main_orange">#ff9500</color>
+    <color name="main_btn_pressed">#ff5f3a</color>
+    <color name="main_btn_disabled">#ff7a1d</color>
+    <color name="main_top_title">#404548</color>
+    <color name="main_top_back">#f9f9f9</color>
+    <color name="main_top_divider">#e3e3e3</color>
+
+    <color name="reminder_state_line">#e4e4e4</color>
+    <color name="custom_detail_status_back">#fcfcfc</color>
+    <color name="custom_detail_status_divider">#e4e4e4</color>
+    <color name="custom_detail_status_hint">#c1c1c1</color>
+
+    <color name="comment_me_back">#f9f9f9</color>
+    <color name="me_comment_item_comment_red">#ff5f3a</color>
+    <color name="me_comment_item_text_grey">#929292</color>
+
+    <color name="me_perform_input_grey">#b7b7b7</color>
+    <color name="me_perform_orange">#fd7b23</color>
+
+
+    <color name="acitonbar_underline">#e3e3e3</color>
+    <color name="actionbar_text">#404548</color>
+    <color name="actionbar_background">#f9f9f9</color>
+
+
+    <color name="press_grey">#dfdfdf</color>
+    <color name="reminder_content">#404548</color>
+    <color name="me_blank_grey">#f2f2f2</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="grey">#919191</color>
+    <color name="text_hint">#D9D9D9</color>
+    <color name="background_tab_pressed">#6633B5E5</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="halftransparent">#e0000000</color>
+    <color name="default_grey">#E8E8E7</color>
+    <color name="light_blue">#6699FF</color>
+    <color name="red">#FF0000</color>
+    <color name="orange">#FF8C00</color>
+
+    <color name="text_black_3C3E40">#3C3E40</color>
+    <color name="aboutus_link_blue">#4883ca</color>
+
+    <color name="gray">#AFAFAF</color>
+    <color name="whites">#ffffff</color>
 </resources>
