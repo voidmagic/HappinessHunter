@@ -1,11 +1,8 @@
 package com.example.wangqian.happinesshunter;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
@@ -17,15 +14,11 @@ import android.widget.Toast;
 import com.example.wangqian.happinesshunter.entity.Record;
 import com.example.wangqian.happinesshunter.service.DemoRecordService;
 import com.example.wangqian.happinesshunter.service.RecordService;
-import com.flyco.dialog.entity.DialogMenuItem;
 import com.flyco.dialog.listener.OnOperItemClickL;
 import com.flyco.dialog.widget.NormalListDialog;
 import com.github.rahatarmanahmed.cpv.CircularProgressView;
 import com.huaban.analysis.jieba.JiebaSegmenter;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -108,7 +101,6 @@ public class WordCloudActivity extends AppCompatActivity {
                     rawDataBuilder.append(entry.getValue()*10000);
                     rawDataBuilder.append(",");
                 }
-                Log.i("tagsss", rawDataBuilder.toString());
                 runOnUiThread(new Runnable() {
 
                     @Override
