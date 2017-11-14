@@ -52,55 +52,25 @@ public class IndexActivity extends AppCompatActivity implements OnMenuItemClickL
     }
 
     private List<MenuObject> getMenuObjects() {
-        // You can use any [resource, bitmap, drawable, color] as image:
-        // item.setResource(...)
-        // item.setBitmap(...)
-        // item.setDrawable(...)
-        // item.setColor(...)
-        // You can set image ScaleType:
-        // item.setScaleType(ScaleType.FIT_XY)
-        // You can use any [resource, drawable, color] as background:
-        // item.setBgResource(...)
-        // item.setBgDrawable(...)
-        // item.setBgColor(...)
-        // You can use any [color] as text color:
-        // item.setTextColor(...)
-        // You can set any [color] as divider color:
-        // item.setDividerColor(...)
 
         List<MenuObject> menuObjects = new ArrayList<>();
 
         MenuObject close = new MenuObject();
         close.setResource(R.drawable.icn_close);
 
-        MenuObject send = new MenuObject("新的日常");
-        send.setResource(R.drawable.icn_1);
+        MenuObject add = new MenuObject("新的日常");
+        add.setResource(R.drawable.icn_1);
 
-        MenuObject addFav = new MenuObject("回忆云");
-        addFav.setResource(R.drawable.icn_4);
+        MenuObject cloud = new MenuObject("回忆云");
+        cloud.setResource(R.drawable.icn_4);
 
-        MenuObject block = new MenuObject("过往日常");
-        block.setResource(R.drawable.icn_5);
-
-//        MenuObject like = new MenuObject("Like profile");
-//        Bitmap b = BitmapFactory.decodeResource(getResources(), R.drawable.icn_2);
-//        like.setBitmap(b);
-//
-//        MenuObject addFr = new MenuObject("Add to friends");
-//        BitmapDrawable bd = new BitmapDrawable(getResources(),
-//                BitmapFactory.decodeResource(getResources(), R.drawable.icn_3));
-//        addFr.setDrawable(bd);
-
-
-
-
+        MenuObject list = new MenuObject("过往日常");
+        list.setResource(R.drawable.icn_5);
 
         menuObjects.add(close);
-        menuObjects.add(send);
-        menuObjects.add(addFav);
-      //  menuObjects.add(like);
-      //  menuObjects.add(addFr);
-        menuObjects.add(block);
+        menuObjects.add(add);
+        menuObjects.add(cloud);
+        menuObjects.add(list);
         return menuObjects;
     }
 
@@ -113,13 +83,14 @@ public class IndexActivity extends AppCompatActivity implements OnMenuItemClickL
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
-        mToolbar.setNavigationIcon(R.drawable.btn_back);
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+//        mToolbar.setNavigationIcon(R.drawable.btn_back);
+//        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onBackPressed();
+//            }
+//        });
+
         mToolBarTextView.setText(getResources().getString(R.string.app_name));
     }
 

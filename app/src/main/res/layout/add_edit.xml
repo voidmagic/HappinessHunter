@@ -2,17 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@color/default_grey"
     android:orientation="vertical" >
+
+    <include layout="@layout/toolbar_left" />
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/label_title" />
+        android:text="@string/label_title"
+        android:textColor="@color/text_color"
+        android:layout_margin="12dp"
+        android:textSize="18dp"/>
 
     <EditText
         android:id="@+id/title"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:layout_margin="12dp"
+        android:textColor="@color/text_color"
+        android:padding="4dp"
+        android:background="@drawable/borderline"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,6 +51,7 @@
                 android:layout_weight="1"
                 android:layout_marginTop="4dp"
                 android:gravity="center"
+                android:textColor="@color/text_color"
                 android:textSize="18dp"
                 android:text="超开心"/>
         </LinearLayout>
@@ -64,6 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:textColor="@color/text_color"
                 android:layout_marginTop="4dp"
                 android:gravity="center"
                 android:textSize="18dp"
@@ -90,6 +102,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:layout_marginTop="4dp"
+                android:textColor="@color/text_color"
                 android:gravity="center"
                 android:textSize="18dp"
                 android:text="一般"/>
@@ -113,6 +126,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:textColor="@color/text_color"
                 android:layout_weight="1"
                 android:layout_marginTop="4dp"
                 android:gravity="center"
@@ -124,6 +138,9 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/text_color"
+        android:layout_margin="12dp"
+        android:textSize="18dp"
         android:text="@string/label_content" />
 
 
@@ -135,23 +152,30 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="12dp"
+            android:background="@drawable/borderline"
             android:layout_weight="7">
 
             <EditText
                 android:gravity="top"
+                android:layout_marginTop="2dp"
                 android:id="@+id/content"
+                android:padding="4dp"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
+                android:textColor="@color/text_color"
+                android:layout_height="wrap_content"
+                android:background="@color/white"/>
         </ScrollView>
 
 
         <Button
             android:id="@+id/confirm"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
             android:layout_weight="1"
             android:onClick="addOrupdate"
-            android:text="@string/button_confirm" />
+            android:text="@string/button_confirm"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_red"/>
 
     </LinearLayout>
 
