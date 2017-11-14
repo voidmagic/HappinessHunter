@@ -32,7 +32,8 @@
             android:name=".activity.DiaryEditActivity" android:windowSoftInputMode="adjustPan|stateHidden"
             android:label="@string/title_activity_diary_add" >
         </activity>
-        <activity android:name=".activity.DiaryReviewActivity"/> 
+        <activity android:name=".activity.DiaryReviewActivity"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
 
         <activity android:name=".WordCloudActivity"/>
         <activity android:name=".WordRecordListActivity"/>

@@ -69,6 +69,7 @@ public class DiaryReviewActivity extends AppCompatActivity {
 		});
 
 		mToolbar.setTitleMarginStart(0);
+		mToolbar.setTitle("Diary");
 
 	}
 

@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -16,10 +18,11 @@ import com.example.wangqian.happinesshunter.entity.Diary;
 import com.example.wangqian.happinesshunter.tools.DateTool;
 
 
-public class DiaryEditActivity extends AppCompatActivity {
+public class DiaryEditActivity extends AppCompatActivity implements TextWatcher{
 	
 	private EditText titleText;
 	private EditText contentText;
+    private TextView tipText;
 	private ImageView happy1,happy2,happy3,happy4;
 	private Integer happy;
 	private DiaryDao diaryDao;
@@ -47,10 +50,14 @@ public class DiaryEditActivity extends AppCompatActivity {
 	private void initViews() {
 		titleText=(EditText) findViewById(R.id.title);
 		contentText=(EditText) findViewById(R.id.content);
+        tipText = (TextView) findViewById(R.id.tips);
+
 		happy1 = (ImageView) findViewById(R.id.happy1);
 		happy2 = (ImageView) findViewById(R.id.happy2);
 		happy3 = (ImageView) findViewById(R.id.happy3);
 		happy4 = (ImageView) findViewById(R.id.happy4);
+
+		contentText.addTextChangedListener(this);
 	}
 
 	private void initToolbar() {
@@ -72,6 +79,7 @@ public class DiaryEditActivity extends AppCompatActivity {
 
 		mToolbar.setTitleMarginStart(0);
 
+		mToolbar.setTitle("New Diary");
 	}
 
 
@@ -132,6 +140,28 @@ public class DiaryEditActivity extends AppCompatActivity {
 			default:
 				break;
 		}
+
+	}
+
+	@Override
+	public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+
+
+	}
+
+	@Override
+	public void onTextChanged(CharSequence s, int start, int before, int count) {
+        //tipText.setText(" 哼哧哼哧~~~");
+	}
+
+	@Override
+	public void afterTextChanged(Editable s) {
+        StringBuffer str = new StringBuffer("输入字数为"+s.length()+"");
+        if (s.length()<20){
+            str.append(","+"要不要再多写点呢~");
+        }
+        tipText.setText(str);
 
 	}
 }

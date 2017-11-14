@@ -4,7 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
@@ -41,7 +41,7 @@ public class WordCloudActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word_cloud);
-
+        initToolbar();
         diaryDao = new DiaryDao(this);
         nlpService = new DemoNlpServiceImpl();
 
@@ -127,7 +127,7 @@ public class WordCloudActivity extends AppCompatActivity {
                 String[] listString = strings.toArray(new String[0]);
 
                 NormalListDialog dialog = new NormalListDialog(WordCloudActivity.this, listString)
-                        .title("\"" + text + "\"相关故事")
+                        .title("\"" + text + "\"相关日常")
                         .dividerHeight(0.5f);
 
 
@@ -156,6 +156,29 @@ public class WordCloudActivity extends AppCompatActivity {
                 loadData();
             }
         });
+    }
+
+    private void initToolbar() {
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        TextView mToolBarTextView = (TextView) findViewById(R.id.text_view_toolbar_title);
+        setSupportActionBar(mToolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
+        mToolbar.setNavigationIcon(R.drawable.btn_back);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+        mToolbar.setTitleMarginStart(0);
+        mToolbar.setTitle("Word Cloud");
+
+
     }
 
 }

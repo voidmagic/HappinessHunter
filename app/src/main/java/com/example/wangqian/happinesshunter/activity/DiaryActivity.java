@@ -34,7 +34,7 @@ public class DiaryActivity extends AppCompatActivity implements AdapterView.OnIt
 	private DiaryDao diaryDao;
 	private Diary diary;
 	private List<Diary> diaryList;
-	private Cursor diaries;
+
 	public static final String TAG = "DiaryActivity";
 	private static final int MENU_EDIT = 1;// 编辑菜单id
 	private static final int MENU_DELETE = 2;// 删除菜单的id
@@ -96,44 +96,10 @@ public class DiaryActivity extends AppCompatActivity implements AdapterView.OnIt
 	 */
 	public void refreshList() {
 		diaryDao = new DiaryDao(this);
-		//diaries = diaryDao.getAllDiaries();
 		diaryList = diaryDao.getAllDiariesData();
-		// TODO: 2017-11-13 改成 自定义adapter
-
-		//startManagingCursor(diaries);
-//		SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(this,
-//				R.layout.item, diaries, new String[] { "title", "createtime" },
-//				new int[] { R.id.title, R.id.createtime });
-//
-//		listView.setAdapter(simpleCursorAdapter);
-
 		DiaryAdapter diaryAdapter = new DiaryAdapter(this,diaryList);
 		listView.setAdapter(diaryAdapter);
 
-	}
-	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0,0,0,"添加一篇新日记");
-		menu.add(0,1,1,"回忆");
-		
-		return true;
-	}
-
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-			case 0:
-				Intent intent = new Intent();
-				intent.setClass(DiaryActivity.this, DiaryEditActivity.class);
-				startActivity(intent);
-				break;
-			case 1:
-			Intent intent2 = new Intent();
-			intent2.setClass(DiaryActivity.this, WordCloudActivity.class);
-			startActivity(intent2);
-			break;
-			default:
-				break;
-		}
-		return super.onOptionsItemSelected(item);
 	}
 
 	// 编辑和删除
