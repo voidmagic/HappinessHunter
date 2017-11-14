@@ -2,15 +2,19 @@ package com.example.wangqian.happinesshunter.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.wangqian.happinesshunter.R;
 import com.example.wangqian.happinesshunter.dao.DiaryDao;
 import com.example.wangqian.happinesshunter.entity.Diary;
 
 
-public class DiaryReviewActivity extends Activity {
+public class DiaryReviewActivity extends AppCompatActivity {
 
 	private EditText titleText;
 	private EditText contentText;
@@ -21,7 +25,7 @@ public class DiaryReviewActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.add_review);
 		initViews();
-
+		initToolbar();
 		// 实现添加日记
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
@@ -45,6 +49,27 @@ public class DiaryReviewActivity extends Activity {
 		happy2 = (ImageView) findViewById(R.id.happy2);
 		happy3 = (ImageView) findViewById(R.id.happy3);
 		happy4 = (ImageView) findViewById(R.id.happy4);
+	}
+
+	private void initToolbar() {
+		Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+		TextView mToolBarTextView = (TextView) findViewById(R.id.text_view_toolbar_title);
+		setSupportActionBar(mToolbar);
+		if (getSupportActionBar() != null) {
+			getSupportActionBar().setHomeButtonEnabled(true);
+			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+			getSupportActionBar().setDisplayShowTitleEnabled(false);
+		}
+		mToolbar.setNavigationIcon(R.drawable.btn_back);
+		mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				onBackPressed();
+			}
+		});
+
+		mToolbar.setTitleMarginStart(0);
+
 	}
 
 

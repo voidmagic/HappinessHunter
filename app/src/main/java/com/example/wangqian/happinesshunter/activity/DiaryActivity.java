@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -27,7 +29,7 @@ import java.util.List;
 
 
 
-public class DiaryActivity extends Activity implements AdapterView.OnItemClickListener{
+public class DiaryActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
 	private ListView listView;
 	private DiaryDao diaryDao;
 	private Diary diary;
@@ -42,7 +44,7 @@ public class DiaryActivity extends Activity implements AdapterView.OnItemClickLi
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_diary);
 		listView = (ListView) this.findViewById(R.id.listview);
-		
+		initToolbar();
 		refreshList();
 		// 当列表为空时，显示
 		TextView emptyText = (TextView) this.findViewById(R.id.emptyShow);
@@ -67,6 +69,26 @@ public class DiaryActivity extends Activity implements AdapterView.OnItemClickLi
 	protected void onResume() {
 		refreshList();
 		super.onResume();
+	}
+	private void initToolbar() {
+		Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+		TextView mToolBarTextView = (TextView) findViewById(R.id.text_view_toolbar_title);
+		setSupportActionBar(mToolbar);
+		if (getSupportActionBar() != null) {
+			getSupportActionBar().setHomeButtonEnabled(true);
+			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+			getSupportActionBar().setDisplayShowTitleEnabled(false);
+		}
+		mToolbar.setNavigationIcon(R.drawable.btn_back);
+		mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				onBackPressed();
+			}
+		});
+
+		mToolbar.setTitleMarginStart(0);
+
 	}
 
 	/**

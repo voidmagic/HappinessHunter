@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.wangqian.happinesshunter.activity.DiaryActivity;
 import com.example.wangqian.happinesshunter.activity.DiaryEditActivity;
+import com.example.wangqian.happinesshunter.activity.DiaryReviewActivity;
 import com.example.wangqian.happinesshunter.dao.DiaryDao;
 import com.example.wangqian.happinesshunter.entity.Diary;
 import com.example.wangqian.happinesshunter.entity.Record;
@@ -147,7 +148,7 @@ public class WordCloudActivity extends AppCompatActivity {
                         Toast.makeText(WordCloudActivity.this, id + "  " + position, Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent();
 
-                        intent.setClass(WordCloudActivity.this, DiaryEditActivity.class);
+                        intent.setClass(WordCloudActivity.this, DiaryReviewActivity.class);
                         intent.putExtra("id",(int) diaries.get(position).getId());
                         startActivity(intent);
                     }
