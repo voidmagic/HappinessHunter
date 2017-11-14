@@ -1,5 +1,7 @@
 package com.example.wangqian.happinesshunter.service;
 
+import android.util.Log;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.github.kevinsawicki.http.HttpRequest;
@@ -11,6 +13,7 @@ public class DemoNlpServiceImpl implements NlpService {
 
     @Override
     public List<String> segmentSentence(String sentence) {
+        Log.e("segmentSentence",sentence);
         HttpRequest request =  HttpRequest.get("http://115.159.180.45:9000/segment/" + sentence, true);
         String jsonResponse = request.body();
         return JSON.parseArray(jsonResponse, String.class);
@@ -18,6 +21,8 @@ public class DemoNlpServiceImpl implements NlpService {
 
     @Override
     public int emotionStrength(String sentence) {
+
+        Log.e("emotionStrength",sentence);
         HttpRequest request =  HttpRequest.get("http://115.159.180.45:9000/sentiment/" + sentence, true);
         String jsonResponse = request.body();
         float s = JSON.parseObject(jsonResponse, Float.class) * 10;
@@ -34,6 +39,7 @@ public class DemoNlpServiceImpl implements NlpService {
 
     @Override
     public int integrity(String sentence) {
+        Log.e("integrity",sentence);
         List<String> stringList = segmentSentence(sentence);
         if (stringList.size() < 10) {
             return 0;
