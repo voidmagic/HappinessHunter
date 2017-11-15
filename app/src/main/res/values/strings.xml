@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HappinessHunter</string>
+    <string name="app_name">HappinessCapturer</string>
 
     <string name="button_show_word_cloud">Word Cloud</string>
     <string name="selected_word_as_param">WordSelected</string>
