@@ -77,9 +77,10 @@ public class TestStackAdapter extends StackAdapter<Diary> {
                 String str = diaryList.get(position).getContent();
                 int happy = diaryList.get(position).getHappy();
                 String title = diaryList.get(position).getTitle();
-                h.onBind(diaryList.get(position).getId(),"         "+title,happy,str,position);
+                String createTime = diaryList.get(position).getCreatetime();
+                h.onBind(diaryList.get(position).getId(),"         "+title,createTime,happy,str,position);
             }else{
-                h.onBind(-1,"         no title",1,"nothing",position);
+                h.onBind(-1,"         no title","no time",1,"nothing",position);
             }
 
         }
@@ -118,6 +119,7 @@ public class TestStackAdapter extends StackAdapter<Diary> {
         TextView mTextTitle;
         TextView content;
         ImageView face;
+        TextView time;
 
         public ColorItemViewHolder(View view) {
             super(view);
@@ -126,6 +128,7 @@ public class TestStackAdapter extends StackAdapter<Diary> {
             mTextTitle = (TextView) view.findViewById(R.id.text_list_card_title);
             content = (TextView) view.findViewById(R.id.text_view);
             face = (ImageView) view.findViewById(R.id.face);
+            time = (TextView) view.findViewById(R.id.createtime);
 
         }
 
@@ -134,9 +137,10 @@ public class TestStackAdapter extends StackAdapter<Diary> {
             mContainerContent.setVisibility(b ? View.VISIBLE : View.GONE);
         }
 
-        public void onBind(final int id,String title,int happy,String str, int position) {
+        public void onBind(final int id,String title,String createTime,int happy,String str, int position) {
             mLayout.getBackground().setColorFilter(ContextCompat.getColor(getContext(), TEST_DATAS[position%25]), PorterDuff.Mode.SRC_IN);
             mTextTitle.setText(title);
+            time.setText(createTime);
             switch (happy){
                 case 3:
                     face.setImageResource(R.mipmap.a23);

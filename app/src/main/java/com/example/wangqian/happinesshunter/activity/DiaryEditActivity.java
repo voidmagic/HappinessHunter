@@ -51,11 +51,45 @@ public class DiaryEditActivity extends AppCompatActivity implements TextWatcher{
 				Diary diary=diaryDao.getDiaryById(id);
 				titleText.setText(diary.getTitle());
 				contentText.setText(diary.getContent());
+                show(diary.getHappy());
 			}
 
 		}
 
 	}
+
+
+    public void show(Integer i) {
+        switch (i){
+            case 3:
+                happy1.setImageDrawable(getResources().getDrawable(R.mipmap.a23));
+                happy2.setImageDrawable(getResources().getDrawable(R.mipmap.a11_default));
+                happy3.setImageDrawable(getResources().getDrawable(R.mipmap.a12_default));
+                happy4.setImageDrawable(getResources().getDrawable(R.mipmap.a13_default));
+                break;
+            case 2:
+                happy1.setImageResource(R.mipmap.a23_default);
+                happy2.setImageDrawable(getResources().getDrawable(R.mipmap.a11));
+                happy3.setImageDrawable(getResources().getDrawable(R.mipmap.a12_default));
+                happy4.setImageDrawable(getResources().getDrawable(R.mipmap.a13_default));
+                break;
+            case 1:
+                happy1.setImageDrawable(getResources().getDrawable(R.mipmap.a23_default));
+                happy2.setImageDrawable(getResources().getDrawable(R.mipmap.a11_default));
+                happy3.setImageDrawable(getResources().getDrawable(R.mipmap.a12));
+                happy4.setImageDrawable(getResources().getDrawable(R.mipmap.a13_default));
+                break;
+            case 0:
+                happy1.setImageDrawable(getResources().getDrawable(R.mipmap.a23_default));
+                happy2.setImageDrawable(getResources().getDrawable(R.mipmap.a11_default));
+                happy3.setImageDrawable(getResources().getDrawable(R.mipmap.a12_default));
+                happy4.setImageDrawable(getResources().getDrawable(R.mipmap.a13));
+                break;
+            default:
+                break;
+        }
+
+    }
 	private void initViews() {
 		titleText=(EditText) findViewById(R.id.title);
 		contentText=(EditText) findViewById(R.id.content);
