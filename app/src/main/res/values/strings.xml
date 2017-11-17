@@ -5,6 +5,9 @@
     <string name="selected_word_as_param">WordSelected</string>
     <string name="context_menu">Context menu</string>
 
+    <string name="menu_action_all_down">All down</string>
+    <string name="menu_action_up_down">Up down</string>
+    <string name="menu_action_up_down_stack">Up down stack</string>
     <string name="hello_world">Hello world!</string>
     <string name="diary_add">幸福捕手</string>
     <string name="diary_delete">删除一篇日记</string>

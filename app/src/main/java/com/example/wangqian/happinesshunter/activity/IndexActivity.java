@@ -12,6 +12,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,14 +33,19 @@ public class IndexActivity extends AppCompatActivity implements OnMenuItemClickL
 
     private FragmentManager fragmentManager;
     private ContextMenuDialogFragment mMenuDialogFragment;
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.index);
+        textView = (TextView) findViewById(R.id.tip) ;
         fragmentManager = getSupportFragmentManager();
         initToolbar();
         initMenuFragment();
+
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.alpha_anim);
+        textView.startAnimation(animation);
 
     }
 
@@ -67,10 +75,14 @@ public class IndexActivity extends AppCompatActivity implements OnMenuItemClickL
         MenuObject list = new MenuObject("过往日常");
         list.setResource(R.drawable.icn_5);
 
+        MenuObject setting = new MenuObject("设置");
+        setting.setResource(R.drawable.setting);
+
         menuObjects.add(close);
         menuObjects.add(add);
         menuObjects.add(cloud);
         menuObjects.add(list);
+        menuObjects.add(setting);
         return menuObjects;
     }
 
@@ -139,7 +151,12 @@ public class IndexActivity extends AppCompatActivity implements OnMenuItemClickL
                 break;
             case 3:
                 intent = new Intent();
-                intent.setClass(IndexActivity.this, DiaryActivity.class);
+                intent.setClass(IndexActivity.this, ListActivity.class);
+                startActivity(intent);
+                break;
+            case 4:
+                intent = new Intent();
+                intent.setClass(IndexActivity.this, AlarmActivity.class);
                 startActivity(intent);
                 break;
             default:

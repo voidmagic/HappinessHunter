@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <com.loopeer.cardstack.CardStackView
+        android:id="@+id/stackview_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:clipToPadding="false"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="60dp"/>
+
+    <LinearLayout
+        android:id="@+id/button_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center_vertical"
+        android:visibility="gone"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:orientation="vertical"
+        android:gravity="center">
+        <Button
+            android:layout_width="48dp"
+            android:layout_height="32dp"
+            android:background="@mipmap/navigate_up"
+            android:onClick="onPreClick"/>
+        <Button
+            android:layout_width="48dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="4dp"
+            android:background="@mipmap/navigate_down"
+            android:onClick="onNextClick"/>
+    </LinearLayout>
+
+
+    <include layout="@layout/toolbar_left" />
+</merge>

@@ -7,8 +7,30 @@
     <include layout="@layout/toolbar" />
 
 
-   <ImageView
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:src="@mipmap/bigwhite"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/bigwhite"/>
+
+        <TextView
+            android:id="@+id/tip"
+            android:layout_width="140dp"
+            android:layout_height="100dp"
+
+            android:layout_marginTop="40dp"
+            android:text="   今天是万圣节，大家都做了南瓜灯哦~O(∩_∩)O~"
+            android:textColor="@color/grey"
+            android:padding="8dp"
+            android:layout_marginLeft="200dp"
+            android:background="@mipmap/dialog"
+            />
+
+    </RelativeLayout>
+
 </LinearLayout>
