@@ -69,7 +69,7 @@ public class DiaryAdapter extends BaseAdapter {
 //        holder.time.setText(DateTool.DATE_FORMAT.format(new Date(diary.getCreatetime())));
 
 
-        holder.happy.setImageResource(R.mipmap.a11);
+     //   holder.happy.setImageResource(R.mipmap.a11);
 
             switch (diary.getHappy()){
                 case 3:
