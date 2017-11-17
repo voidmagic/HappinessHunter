@@ -68,6 +68,15 @@ public class WordCloudActivity extends AppCompatActivity {
         filter.add("得");
         filter.add("地");
         filter.add("哈");
+        filter.add("了");
+        filter.add("呵");
+        filter.add("喵");
+        filter.add("被");
+        filter.add("哎");
+        filter.add("可");
+        filter.add("诶");
+        filter.add("也");
+        
         filter.add("～");
     }
 
