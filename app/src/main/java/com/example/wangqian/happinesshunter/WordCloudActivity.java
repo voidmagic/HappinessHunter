@@ -34,6 +34,7 @@ public class WordCloudActivity extends AppCompatActivity {
     private CircularProgressView progressView;
     private TextView progressTextView;
     private NlpService nlpService;
+    private List<String> filter;
 
     // use dependency injection if possible
     private DiaryDao diaryDao;
@@ -41,12 +42,33 @@ public class WordCloudActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word_cloud);
+
+        initFilter();
         initToolbar();
         diaryDao = new DiaryDao(this);
         nlpService = new DemoNlpServiceImpl();
 
         initWebView();
         initProjressView();
+    }
+
+
+    private void initFilter() {
+        filter = new ArrayList<>();
+
+        filter.add("的");
+        filter.add("么");
+        filter.add("吗");
+        filter.add("啦");
+        filter.add("很");
+        filter.add("啊");
+        filter.add("是");
+        filter.add("在");
+        filter.add("和");
+        filter.add("得");
+        filter.add("地");
+        filter.add("哈");
+        filter.add("～");
     }
 
     private void initProjressView() {
@@ -80,6 +102,9 @@ public class WordCloudActivity extends AppCompatActivity {
                     String stripedContent = diary.getContent().replaceAll("\\p{P}" , " ");
                     List<String> wordList = nlpService.segmentSentence(stripedContent);
                     for (String word: wordList) {
+                        if (filter.contains(word)) {
+                            continue;
+                        }
                         if (wordValueMap.containsKey(word)) {
                             int value = wordValueMap.get(word);
                             wordValueMap.put(word, value + strength);
