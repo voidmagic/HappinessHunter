@@ -4,9 +4,14 @@ import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.example.wangqian.happinesshunter.HappinessHunterApplication;
 import com.github.kevinsawicki.http.HttpRequest;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class DemoNlpServiceImpl implements NlpService {
@@ -51,4 +56,51 @@ public class DemoNlpServiceImpl implements NlpService {
             return 3;
         }
     }
+
+    @Override
+    public List<String> containsPositiveWords(String sentence) {
+        List<String> inputWords = segmentSentence(sentence);
+        Set<String> inputWordsSet = new HashSet<>(inputWords);
+
+        Set<String> positiveDict = HappinessHunterApplication.positiveWords;
+
+        Set<String> result = new HashSet<>();
+        result.addAll(inputWordsSet);
+        result.retainAll(positiveDict);
+        return new ArrayList<>(result);
+
+    }
+
+    @Override
+    public List<String> containsNegativeWords(String sentence) {
+        List<String> inputWords = segmentSentence(sentence);
+        Set<String> inputWordsSet = new HashSet<>(inputWords);
+
+        Set<String> negativeDict = HappinessHunterApplication.negativeWords;
+
+        Set<String> result = new HashSet<>();
+        result.addAll(inputWordsSet);
+        result.retainAll(negativeDict);
+        return new ArrayList<>(result);
+    }
+
+    /**
+     * 包含的negative词
+     *
+     * @param sentence 输入句子
+     * @return 包含的negative词
+     */
+    @Override
+    public List<String> containsCognitiveWords(String sentence) {
+        List<String> inputWords = segmentSentence(sentence);
+        Set<String> inputWordsSet = new HashSet<>(inputWords);
+
+        Set<String> cognitiveDict = HappinessHunterApplication.cognitiveWords;
+
+        Set<String> result = new HashSet<>();
+        result.addAll(inputWordsSet);
+        result.retainAll(cognitiveDict);
+        return new ArrayList<>(result);
+    }
+
 }

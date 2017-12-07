@@ -25,4 +25,25 @@ public interface NlpService {
      * @return 0-5，0表示不完整，5表示很完整
      */
     int integrity(String sentence);
+
+    /**
+     * 包含的positive词
+     * @param sentence 输入句子
+     * @return 包含的positive词
+     */
+    List<String> containsPositiveWords(String sentence);
+
+    /**
+     * 包含的negative词
+     * @param sentence 输入句子
+     * @return 包含的negative词
+     */
+    List<String> containsNegativeWords(String sentence);
+
+    /**
+     * 包含的negative词
+     * @param sentence 输入句子
+     * @return 包含的negative词
+     */
+    List<String> containsCognitiveWords(String sentence);
 }
