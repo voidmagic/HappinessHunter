@@ -41,9 +41,9 @@ public interface NlpService {
     List<String> containsNegativeWords(String sentence);
 
     /**
-     * 包含的negative词
+     * 包含的cognitive词
      * @param sentence 输入句子
-     * @return 包含的negative词
+     * @return 包含的cognitive词
      */
     List<String> containsCognitiveWords(String sentence);
 }
