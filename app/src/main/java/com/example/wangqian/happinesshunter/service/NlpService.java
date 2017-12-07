@@ -34,6 +34,13 @@ public interface NlpService {
     List<String> containsPositiveWords(String sentence);
 
     /**
+     * 包含的positive词的比例
+     * @param sentence 输入句子
+     * @return 包含的positive词的比例
+     */
+    double positivePercentage(String sentence);
+
+    /**
      * 包含的negative词
      * @param sentence 输入句子
      * @return 包含的negative词
@@ -41,9 +48,27 @@ public interface NlpService {
     List<String> containsNegativeWords(String sentence);
 
     /**
+     * 包含的negative词的比例
+     * @param sentence 输入句子
+     * @return 包含的negative词的比例
+     */
+    double negativePercentage(String sentence);
+
+    /**
      * 包含的cognitive词
      * @param sentence 输入句子
      * @return 包含的cognitive词
      */
     List<String> containsCognitiveWords(String sentence);
+
+    /**
+     * 包含的cognitive词的比例
+     * @param sentence 输入句子
+     * @return 包含的cognitive词的比例
+     */
+    double cognitivePercentage(String sentence);
+
+
+
+
 }

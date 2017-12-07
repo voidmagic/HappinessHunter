@@ -60,47 +60,62 @@ public class DemoNlpServiceImpl implements NlpService {
     @Override
     public List<String> containsPositiveWords(String sentence) {
         List<String> inputWords = segmentSentence(sentence);
-        Set<String> inputWordsSet = new HashSet<>(inputWords);
 
         Set<String> positiveDict = HappinessHunterApplication.positiveWords;
 
-        Set<String> result = new HashSet<>();
-        result.addAll(inputWordsSet);
-        result.retainAll(positiveDict);
-        return new ArrayList<>(result);
+        inputWords.retainAll(positiveDict);
+        return new ArrayList<>(new HashSet<>(inputWords));
 
+    }
+
+    @Override
+    public double positivePercentage(String sentence) {
+        List<String> inputWords = segmentSentence(sentence);
+        int total = inputWords.size();
+
+        Set<String> positiveDict = HappinessHunterApplication.positiveWords;
+        inputWords.retainAll(positiveDict);
+        return inputWords.size() * 1.0 / total;
     }
 
     @Override
     public List<String> containsNegativeWords(String sentence) {
         List<String> inputWords = segmentSentence(sentence);
-        Set<String> inputWordsSet = new HashSet<>(inputWords);
 
         Set<String> negativeDict = HappinessHunterApplication.negativeWords;
 
-        Set<String> result = new HashSet<>();
-        result.addAll(inputWordsSet);
-        result.retainAll(negativeDict);
-        return new ArrayList<>(result);
+        inputWords.retainAll(negativeDict);
+        return new ArrayList<>(new HashSet<>(inputWords));
     }
 
-    /**
-     * 包含的negative词
-     *
-     * @param sentence 输入句子
-     * @return 包含的negative词
-     */
+
+    @Override
+    public double negativePercentage(String sentence) {
+        List<String> inputWords = segmentSentence(sentence);
+        int total = inputWords.size();
+
+        Set<String> negativeDict = HappinessHunterApplication.negativeWords;
+        inputWords.retainAll(negativeDict);
+        return inputWords.size() * 1.0 / total;
+    }
+
     @Override
     public List<String> containsCognitiveWords(String sentence) {
         List<String> inputWords = segmentSentence(sentence);
-        Set<String> inputWordsSet = new HashSet<>(inputWords);
-
         Set<String> cognitiveDict = HappinessHunterApplication.cognitiveWords;
 
-        Set<String> result = new HashSet<>();
-        result.addAll(inputWordsSet);
-        result.retainAll(cognitiveDict);
-        return new ArrayList<>(result);
+        inputWords.retainAll(cognitiveDict);
+        return new ArrayList<>(new HashSet<>(inputWords));
+    }
+
+    @Override
+    public double cognitivePercentage(String sentence) {
+        List<String> inputWords = segmentSentence(sentence);
+        int total = inputWords.size();
+
+        Set<String> cognitiveDict = HappinessHunterApplication.negativeWords;
+        inputWords.retainAll(cognitiveDict);
+        return inputWords.size() * 1.0 / total;
     }
 
 }
