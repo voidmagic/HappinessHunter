@@ -15,7 +15,11 @@
     <color name="actionsheet_blue">#037BFF</color>
     <color name="actionsheet_red">#FD4A2E</color>
     <color name="actionsheet_gray">#8F8F8F</color>
+    <color name="popupwindow_background">#96000000</color>
 
+    <color name="background">#f0eff4</color>//页面底色，分隔横条颜色
+    <color name="text_black">#3c3e40</color>//标题文字
+    <color name="main_blue">#00C0E0</color>//主题蓝
     <color name="point_orange">#FF6103</color>
     <color name="point_blue">#1E90FF</color>
     <color name="popupwindow1">#727577</color>
@@ -28,7 +32,7 @@
     <color name="main_tab_divider">#757575</color>
     <color name="main_tab_text">#757575</color>
     <color name="main_tab_text_unable">#c3c3c3</color>
-    <color name="main_orange">#ff9500</color>
+    <color name="main_orange">#00C0E0</color>
     <color name="main_btn_pressed">#ff5f3a</color>
     <color name="main_btn_disabled">#ff7a1d</color>
     <color name="main_top_title">#404548</color>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/popupwindow_background"
+  >
+
+
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white"
+            >
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="@color/white"
+                android:text="新的日常"
+                android:textSize="@dimen/text_size_actionbar"
+                android:textColor="@color/main_blue"/>
+
+            <TextView
+                android:id="@+id/content"
+                style="@style/body_style"
+                android:text="       内容这是内容这是内这是内容是内容"
+                android:lineSpacingExtra="12dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="25dp"
+                />
+
+        </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+        android:orientation="horizontal"
+        android:background="@color/background"
+        android:gravity="center"
+        >
+
+        <TextView
+        android:id="@+id/positive"
+        android:layout_width="150dp"
+        android:layout_height="35dp"
+        android:text="心情不错"
+        android:background="@color/background"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_body"
+        android:textColor="@color/main_blue"/>
+
+        <TextView
+            android:id="@+id/negitive"
+            android:layout_width="150dp"
+            android:layout_height="35dp"
+            android:text="有点压力"
+            android:background="@color/background"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_body"
+            android:textColor="@color/main_blue"/>
+
+
+    </LinearLayout>
+
+
+
+
+    
+
+</LinearLayout>

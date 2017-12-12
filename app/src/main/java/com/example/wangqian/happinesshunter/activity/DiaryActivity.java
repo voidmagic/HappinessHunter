@@ -1,16 +1,12 @@
 package com.example.wangqian.happinesshunter.activity;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wangqian.happinesshunter.R;
-import com.example.wangqian.happinesshunter.WordCloudActivity;
 import com.example.wangqian.happinesshunter.adapter.DiaryAdapter;
 import com.example.wangqian.happinesshunter.dao.DiaryDao;
 import com.example.wangqian.happinesshunter.entity.Diary;
@@ -110,7 +105,7 @@ public class DiaryActivity extends AppCompatActivity implements AdapterView.OnIt
 		switch (item.getItemId()) {
 		case MENU_EDIT:
 			Intent intent = new Intent();
-			intent.setClass(DiaryActivity.this, DiaryEditActivity.class);
+			intent.setClass(DiaryActivity.this, EditPositiveActivity.class);
 			intent.putExtra("id",(int)menuInfo.id);
 			startActivity(intent);
             //跳转到DiaryEditActivity，并将选中日记对应的id传过去

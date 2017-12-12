@@ -6,14 +6,16 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class HappinessHunterApplication extends Application {
 
     public static Set<String> positiveWords = new HashSet<>();
     public static Set<String> negativeWords = new HashSet<>();
-    public static Set<String> cognitiveWords = new HashSet<>();
+    public static List<String> cognitiveWords = new ArrayList<>();
 
     @Override
     public void onCreate() {
@@ -42,7 +44,7 @@ public class HappinessHunterApplication extends Application {
         is.close();
         // Convert the buffer into a string.
         String text = new String(buffer, "utf-8");
-        String[] wordList = text.split("\n");
+        String[] wordList = text.split("\r\n");
 
         for (String aWordList : wordList) {
             if (StringUtils.isNotEmpty(aWordList)) {
@@ -61,7 +63,7 @@ public class HappinessHunterApplication extends Application {
         is.close();
         // Convert the buffer into a string.
         String text = new String(buffer, "utf-8");
-        String[] wordList = text.split("\n");
+        String[] wordList = text.split("\r\n");
         for (String aWordList : wordList) {
             if (StringUtils.isNotEmpty(aWordList)) {
                 negativeWords.add(aWordList);
@@ -78,7 +80,7 @@ public class HappinessHunterApplication extends Application {
         is.close();
         // Convert the buffer into a string.
         String text = new String(buffer, "utf-8");
-        String[] wordList = text.split("\n");
+        String[] wordList = text.split("\r\n");
         for (String aWordList : wordList) {
             if (StringUtils.isNotEmpty(aWordList)) {
                 cognitiveWords.add(aWordList);

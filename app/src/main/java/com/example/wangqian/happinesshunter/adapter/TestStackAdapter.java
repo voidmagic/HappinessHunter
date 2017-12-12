@@ -11,8 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.wangqian.happinesshunter.R;
-import com.example.wangqian.happinesshunter.activity.DiaryActivity;
-import com.example.wangqian.happinesshunter.activity.DiaryEditActivity;
+import com.example.wangqian.happinesshunter.activity.EditPositiveActivity;
 import com.example.wangqian.happinesshunter.entity.Diary;
 import com.loopeer.cardstack.CardStackView;
 import com.loopeer.cardstack.StackAdapter;
@@ -163,7 +162,7 @@ public class TestStackAdapter extends StackAdapter<Diary> {
                 @Override
                 public boolean onLongClick(View v) {
                     Intent intent = new Intent();
-                    intent.setClass(getContext(), DiaryEditActivity.class);
+                    intent.setClass(getContext(), EditPositiveActivity.class);
                     intent.putExtra("id",id);
                     getContext().startActivity(intent);
                     //跳转到DiaryEditActivity，并将选中日记对应的id传过去

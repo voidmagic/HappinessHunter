@@ -28,7 +28,11 @@
 
         </activity>
         <activity
-            android:name=".activity.DiaryEditActivity" android:windowSoftInputMode="adjustPan|stateHidden"
+            android:name=".activity.EditPositiveActivity" android:windowSoftInputMode="adjustPan|stateHidden"
+            android:label="@string/title_activity_diary_add" >
+        </activity>
+        <activity
+            android:name=".activity.EditNegativeActivity" android:windowSoftInputMode="adjustPan|stateHidden"
             android:label="@string/title_activity_diary_add" >
         </activity>
         <activity android:name=".activity.DiaryReviewActivity"

@@ -1,20 +1,21 @@
 package com.example.wangqian.happinesshunter.activity;
 
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -140,9 +141,7 @@ public class IndexActivity extends AppCompatActivity implements OnMenuItemClickL
         //Toast.makeText(this, "Clicked on position: " + position, Toast.LENGTH_SHORT).show();
         switch (position){
             case 1:
-                intent = new Intent();
-                intent.setClass(IndexActivity.this, DiaryEditActivity.class);
-                startActivity(intent);
+                iniPopupWindowNoBack(IndexActivity.this,"          告诉大白，今天心情如何?");
                 break;
             case 2:
                 intent = new Intent();
@@ -167,5 +166,54 @@ public class IndexActivity extends AppCompatActivity implements OnMenuItemClickL
     @Override
     public void onMenuItemLongClick(View clickedView, int position) {
         Toast.makeText(this, "Long clicked on position: " + position, Toast.LENGTH_SHORT).show();
+    }
+
+    public  void iniPopupWindowNoBack(final Context context, String content) {
+        final PopupWindow pwMyPopWindow;
+        LayoutInflater inflater = (LayoutInflater) context
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View layout = inflater.inflate(R.layout.popup_iknow, null);
+        TextView positive = (TextView) layout.findViewById(R.id.positive);
+        TextView negitive = (TextView) layout.findViewById(R.id.negitive);
+        TextView contentTextView=(TextView)layout.findViewById(R.id.content);
+        contentTextView.setText(content);
+        pwMyPopWindow = new PopupWindow(layout);
+        pwMyPopWindow.setFocusable(true);// 加上这个,popupwindow中的ListView才可以接收点击事件
+
+
+// 控制popupwindow的宽度和高度自适应
+        layout.measure(View.MeasureSpec.UNSPECIFIED,
+                View.MeasureSpec.UNSPECIFIED);
+        pwMyPopWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
+        pwMyPopWindow.setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
+
+// 控制popupwindow点击屏幕其他地方消失
+        //   pwMyPopWindow.setBackgroundDrawable(context.getResources().getDrawable(
+        //         R.color.background));// 设置背景图片，不能在布局中设置，要通过代码来设置
+        pwMyPopWindow.setOutsideTouchable(false);
+
+
+        pwMyPopWindow.showAtLocation(layout, Gravity.CENTER, 0, 0);
+
+
+        positive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pwMyPopWindow.dismiss();
+                intent = new Intent();
+                intent.setClass(IndexActivity.this, EditPositiveActivity.class);
+                startActivity(intent);
+            }
+        });
+        negitive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pwMyPopWindow.dismiss();
+                intent = new Intent();
+                intent.setClass(IndexActivity.this, EditNegativeActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

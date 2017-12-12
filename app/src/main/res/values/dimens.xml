@@ -4,6 +4,14 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="margin_two">7dp</dimen>
+    <dimen name="margin_side">12dp</dimen>
+    <dimen name="margin_top_big">20dp</dimen>
+    <dimen name="margin_top_middle">16dp</dimen>
+    <dimen name="margin_top_small">10dp</dimen>
+
+    <dimen name="text_size_body">14dp</dimen>
+    <dimen name="text_size_actionbar">18dp</dimen>
     <dimen name="tool_bar_text_size">22sp</dimen>
     <dimen name="main_screen_side_padding">10dp</dimen>
     <dimen name="text_top_padding">25dp</dimen>

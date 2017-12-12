@@ -1,6 +1,5 @@
 package com.example.wangqian.happinesshunter.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -18,11 +17,10 @@ import com.example.wangqian.happinesshunter.entity.Diary;
 import com.example.wangqian.happinesshunter.service.DemoNlpServiceImpl;
 import com.example.wangqian.happinesshunter.service.NlpService;
 import com.example.wangqian.happinesshunter.tools.DateTool;
+import com.example.wangqian.happinesshunter.tools.Model;
 
-import static com.example.wangqian.happinesshunter.tools.DateTool.random;
 
-
-public class DiaryEditActivity extends AppCompatActivity implements TextWatcher{
+public class EditPositiveActivity extends AppCompatActivity implements TextWatcher{
 	
 	private EditText titleText;
 	private EditText contentText;
@@ -30,13 +28,13 @@ public class DiaryEditActivity extends AppCompatActivity implements TextWatcher{
 	private ImageView happy1,happy2,happy3,happy4;
 	private Integer happy;
 	private DiaryDao diaryDao;
-    private TextView full,emotionStength;
+   // private TextView full,emotionStength;
 
     private NlpService nlpService;
 	private int number=0;
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.add_edit);
+		setContentView(R.layout.add_edit_positive);
 		initViews();
 		initToolbar();
 
@@ -100,8 +98,8 @@ public class DiaryEditActivity extends AppCompatActivity implements TextWatcher{
 		happy3 = (ImageView) findViewById(R.id.happy3);
 		happy4 = (ImageView) findViewById(R.id.happy4);
 
-        full = (TextView) findViewById(R.id.full);
-        emotionStength = (TextView) findViewById(R.id.emotion);
+//        full = (TextView) findViewById(R.id.full);
+//        emotionStength = (TextView) findViewById(R.id.emotion);
 
 		contentText.addTextChangedListener(this);
 	}
@@ -135,7 +133,7 @@ public class DiaryEditActivity extends AppCompatActivity implements TextWatcher{
 		Diary diary = new Diary(titleText.getText().toString(),
 				contentText.getText().toString(),
 				DateTool.getCurrentTime(),happy);
-	    diaryDao=new DiaryDao(DiaryEditActivity.this);
+	    diaryDao=new DiaryDao(EditPositiveActivity.this);
 	    if(number==1){
 	    	diary.setId(this.getIntent().getExtras().getInt("id"));
 			diaryDao.update(diary);
@@ -203,59 +201,32 @@ public class DiaryEditActivity extends AppCompatActivity implements TextWatcher{
 
 	@Override
 	public void afterTextChanged( final Editable s) {
-        Log.e("xxxxxxxxxxx",s.toString());
+        //Log.e("xxxxxxxxxxx",s.toString());
+        if (s == null || s.equals("")) return;
 
         new Thread(new Runnable() {
             @Override
             public void run() {
+                //每三个字更新一次
+              // if (s.length()% 3 != 0) return;
 
-                final int textFull = nlpService.integrity(s.toString());
-                final int emotion = nlpService.emotionStrength(s.toString());
+                Double positiveRate = nlpService.positivePercentage(s.toString());
+                Double negativeRate = nlpService.negativePercentage(s.toString());
+                Double cognitiveRate = nlpService.cognitivePercentage(s.toString());
+
+                Log.e("xxxxxxxxxxxxx",positiveRate.toString()+"  "+negativeRate+"  "+cognitiveRate);
+                final StringBuffer feedback = Model.getFeedback(s.length(),positiveRate,negativeRate,cognitiveRate);
+                if (null == feedback) return;
+
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        full.setText(String.valueOf(textFull));
-                        emotionStength.setText(String.valueOf(emotion));
-                        StringBuffer str;
-                        if (s.length() < 15) {
-                            str = new StringBuffer("输入字数为" + s.length() + "");
-                            str.append("," + "要不要再多写点呢~");
-                        } else if (textFull < 3) {
-                            str = new StringBuffer("还可以再描述多一点哦~");
-                        } else if (emotion < 3) {
-                            str = new StringBuffer(" Emm...今天真的不开心么？有没有什么小事没有想到呢~~");
-                        } else if (emotion > 3) {
-                            str = new StringBuffer(" 哇哦，真的是棒棒的呢~");
-                        } else {
-                            int whichTip = random.nextInt(5);
-                            switch (whichTip) {
-                                case 0:
-                                    str = new StringBuffer("今天天气不错呀");
-                                    break;
-                                case 1:
-                                    str = new StringBuffer("大王叫我来巡山嘞~");
-                                    break;
-                                case 2:
-                                    str = new StringBuffer("老爸，老爸，我们去哪里呀~");
-                                    break;
-                                case 3:
-                                    str = new StringBuffer("在山的那边海的那边，有一群程序员~");
-                                    break;
-                                case 4:
-                                    str = new StringBuffer("待我bug尽消，共赏秋月可好？");
-                                    break;
-                                default:
-                                    str = new StringBuffer("我一直都在流浪，可我不曾见过海洋~");
-                                    break;
-                            }
-                        }
-                        tipText.setText(str);
+                        tipText.setText(feedback);
                     }
                 });
             }
         }).start();
-
-
-
 	}
+
+
 }

@@ -136,53 +136,53 @@
     </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        android:orientation="horizontal"
-        android:gravity="start|center_vertical">
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="12dp"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:gravity="start|center_vertical">-->
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="3"
-            android:layout_height="wrap_content"
-            android:textColor="@color/text_color"
-            android:gravity="left"
-            android:textSize="18dp"
-            android:text="@string/label_content" />
+        <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="3"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textColor="@color/text_color"-->
+            <!--android:gravity="left"-->
+            <!--android:textSize="18dp"-->
+            <!--android:text="@string/label_content" />-->
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1.5"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:text="完整度:"
-            />
+        <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1.5"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="left"-->
+            <!--android:text="完整度:"-->
+            <!--/>-->
 
-        <TextView
-            android:id="@+id/full"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:gravity="left"
-            android:layout_height="wrap_content"
-            android:text="0"/>
+        <!--<TextView-->
+            <!--android:id="@+id/full"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="left"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="0"/>-->
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1.5"
-            android:gravity="left"
-            android:layout_height="wrap_content"
-            android:text="情感强度:"
-            />
+        <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1.5"-->
+            <!--android:gravity="left"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="情感强度:"-->
+            <!--/>-->
 
-        <TextView
-            android:id="@+id/emotion"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="0"/>
-    </LinearLayout>
+        <!--<TextView-->
+            <!--android:id="@+id/emotion"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="0"/>-->
+    <!--</LinearLayout>-->
 
 
     <TextView
@@ -193,7 +193,7 @@
         android:layout_marginRight="12dp"
         android:textSize="14dp"
         android:text="今天有什么开心的事情咩~"
-        android:textColor="@color/text_hint"/>
+        android:textColor="@color/text_black"/>/>
 
 
 
