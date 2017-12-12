@@ -60,6 +60,12 @@ public class DemoNlpServiceImpl implements NlpService {
     }
 
     @Override
+    public int totalSize(String sentence) {
+        List<String> inputWords = segmentSentence(sentence);
+        return inputWords.size();
+    }
+
+    @Override
     public List<String> containsPositiveWords(String sentence) {
         List<String> inputWords = segmentSentence(sentence);
 
@@ -76,25 +82,19 @@ public class DemoNlpServiceImpl implements NlpService {
     public double positivePercentage(String sentence) {
         List<String> inputWords = segmentSentence(sentence);
         int total = inputWords.size();
-//        for (String s:inputWords
-//                ) {
-//            Log.e("xxxx words before:",s);
-//        }
         Set<String> positiveDict = HappinessHunterApplication.positiveWords;
-   //     Log.e("xxxx positiveDict:",positiveDict.size()+"");
-//
-
-//        Set<String> temp = new HashSet<>();
-//        temp.add("了不起");
-//        temp.add("了不起的");
-//        temp.add("人性");
         inputWords.retainAll(positiveDict);
-      //  inputWords.retainAll(temp);
-//        for (String s:inputWords
-//                ) {
-//            Log.e("xxxx words after:",s);
-//        }
         return inputWords.size() * 1.0 / total;
+    }
+
+
+    @Override
+    public int positiveNum(String sentence) {
+        List<String> inputWords = segmentSentence(sentence);
+        int total = inputWords.size();
+        Set<String> positiveDict = HappinessHunterApplication.positiveWords;
+        inputWords.retainAll(positiveDict);
+        return inputWords.size();
     }
 
     @Override
@@ -120,6 +120,16 @@ public class DemoNlpServiceImpl implements NlpService {
     }
 
     @Override
+    public int negativeNum(String sentence) {
+        List<String> inputWords = segmentSentence(sentence);
+        int total = inputWords.size();
+        Set<String> negativeDict = HappinessHunterApplication.negativeWords;
+
+        inputWords.retainAll(negativeDict);
+        return inputWords.size();
+    }
+
+    @Override
     public List<String> containsCognitiveWords(String sentence) {
         List<String> inputWords = segmentSentence(sentence);
         List<String> cognitiveDict = HappinessHunterApplication.cognitiveWords;
@@ -135,6 +145,15 @@ public class DemoNlpServiceImpl implements NlpService {
         List<String> cognitiveDict = HappinessHunterApplication.cognitiveWords;
        inputWords.retainAll(cognitiveDict);
         return inputWords.size() * 1.0 / total;
+    }
+
+    @Override
+    public int cognitiveNum(String sentence) {
+        List<String> inputWords = segmentSentence(sentence);
+        int total = inputWords.size();
+        List<String> cognitiveDict = HappinessHunterApplication.cognitiveWords;
+        inputWords.retainAll(cognitiveDict);
+        return inputWords.size();
     }
 
 }

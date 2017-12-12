@@ -27,6 +27,13 @@ public interface NlpService {
     int integrity(String sentence);
 
     /**
+     * 分词后的词总数
+     * @param sentence 输入句子
+     * @return 包含的词的个数
+     */
+    int totalSize(String sentence);
+
+    /**
      * 包含的positive词
      * @param sentence 输入句子
      * @return 包含的positive词
@@ -39,6 +46,13 @@ public interface NlpService {
      * @return 包含的positive词的比例
      */
     double positivePercentage(String sentence);
+
+    /**
+     * 包含的positive词的比例
+     * @param sentence 输入句子
+     * @return 包含的positive词的个数
+     */
+    int positiveNum(String sentence);
 
     /**
      * 包含的negative词
@@ -55,6 +69,13 @@ public interface NlpService {
     double negativePercentage(String sentence);
 
     /**
+     * 包含的negative词的比例
+     * @param sentence 输入句子
+     * @return 包含的negative词的个数
+     */
+    int negativeNum(String sentence);
+
+    /**
      * 包含的cognitive词
      * @param sentence 输入句子
      * @return 包含的cognitive词
@@ -68,7 +89,12 @@ public interface NlpService {
      */
     double cognitivePercentage(String sentence);
 
-
+    /**
+     * 包含的cognitive词的比例
+     * @param sentence 输入句子
+     * @return 包含的cognitive词的个数
+     */
+    int cognitiveNum(String sentence);
 
 
 }

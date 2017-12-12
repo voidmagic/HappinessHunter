@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/default_grey"
+    android:orientation="vertical" >
+<LinearLayout
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/default_grey"
@@ -136,21 +142,22 @@
     </LinearLayout>
 
 
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_margin="12dp"-->
-        <!--android:orientation="horizontal"-->
-        <!--android:gravity="start|center_vertical">-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:orientation="horizontal"
+        android:gravity="start|center_vertical">
 
-        <!--<TextView-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_weight="3"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textColor="@color/text_color"-->
-            <!--android:gravity="left"-->
-            <!--android:textSize="18dp"-->
-            <!--android:text="@string/label_content" />-->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color"
+            android:gravity="left"
+            android:textSize="18dp"
+            android:text="@string/label_content" />
+
 
         <!--<TextView-->
             <!--android:layout_width="0dp"-->
@@ -182,7 +189,7 @@
             <!--android:layout_weight="1"-->
             <!--android:layout_height="wrap_content"-->
             <!--android:text="0"/>-->
-    <!--</LinearLayout>-->
+    </LinearLayout>
 
 
     <TextView
@@ -196,6 +203,12 @@
         android:textColor="@color/text_black"/>/>
 
 
+    <ImageView
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/reflection1"
+        android:layout_marginLeft="14dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -220,6 +233,8 @@
         </ScrollView>
 
 
+
+
         <Button
             android:id="@+id/confirm"
             android:layout_width="match_parent"
@@ -233,3 +248,17 @@
     </LinearLayout>
 
 </LinearLayout>
+
+    <!--点赞动画-->
+<RelativeLayout
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:layout_centerInParent="true">
+<com.example.wangqian.happinesshunter.tools.HeartLayout
+    android:id="@+id/heart_layout"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_marginTop="200dp"
+    android:focusable="true"  />
+</RelativeLayout>
+</RelativeLayout>

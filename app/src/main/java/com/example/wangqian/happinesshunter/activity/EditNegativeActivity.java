@@ -21,16 +21,16 @@ import com.example.wangqian.happinesshunter.tools.Model;
 
 
 public class EditNegativeActivity extends AppCompatActivity implements TextWatcher{
-	
+
 	private EditText titleText;
 	private EditText contentText;
-    private TextView tipText;
+	private TextView tipText;
 	private ImageView happy1,happy2,happy3,happy4;
 	private Integer happy;
 	private DiaryDao diaryDao;
-   // private TextView full,emotionStength;
+	// private TextView full,emotionStength;
 
-    private NlpService nlpService;
+	private NlpService nlpService;
 	private int number=0;
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,7 +38,7 @@ public class EditNegativeActivity extends AppCompatActivity implements TextWatch
 		initViews();
 		initToolbar();
 
-        nlpService = new DemoNlpServiceImpl();
+		nlpService = new DemoNlpServiceImpl();
 		// 实现添加日记
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
@@ -49,7 +49,7 @@ public class EditNegativeActivity extends AppCompatActivity implements TextWatch
 				Diary diary=diaryDao.getDiaryById(id);
 				titleText.setText(diary.getTitle());
 				contentText.setText(diary.getContent());
-                show(diary.getHappy());
+				show(diary.getHappy());
 			}
 
 		}
@@ -57,41 +57,41 @@ public class EditNegativeActivity extends AppCompatActivity implements TextWatch
 	}
 
 
-    public void show(Integer i) {
-        switch (i){
-            case 3:
-                happy1.setImageDrawable(getResources().getDrawable(R.mipmap.a23));
-                happy2.setImageDrawable(getResources().getDrawable(R.mipmap.a11_default));
-                happy3.setImageDrawable(getResources().getDrawable(R.mipmap.a12_default));
-                happy4.setImageDrawable(getResources().getDrawable(R.mipmap.a13_default));
-                break;
-            case 2:
-                happy1.setImageResource(R.mipmap.a23_default);
-                happy2.setImageDrawable(getResources().getDrawable(R.mipmap.a11));
-                happy3.setImageDrawable(getResources().getDrawable(R.mipmap.a12_default));
-                happy4.setImageDrawable(getResources().getDrawable(R.mipmap.a13_default));
-                break;
-            case 1:
-                happy1.setImageDrawable(getResources().getDrawable(R.mipmap.a23_default));
-                happy2.setImageDrawable(getResources().getDrawable(R.mipmap.a11_default));
-                happy3.setImageDrawable(getResources().getDrawable(R.mipmap.a12));
-                happy4.setImageDrawable(getResources().getDrawable(R.mipmap.a13_default));
-                break;
-            case 0:
-                happy1.setImageDrawable(getResources().getDrawable(R.mipmap.a23_default));
-                happy2.setImageDrawable(getResources().getDrawable(R.mipmap.a11_default));
-                happy3.setImageDrawable(getResources().getDrawable(R.mipmap.a12_default));
-                happy4.setImageDrawable(getResources().getDrawable(R.mipmap.a13));
-                break;
-            default:
-                break;
-        }
+	public void show(Integer i) {
+		switch (i){
+			case 3:
+				happy1.setImageDrawable(getResources().getDrawable(R.mipmap.a23));
+				happy2.setImageDrawable(getResources().getDrawable(R.mipmap.a11_default));
+				happy3.setImageDrawable(getResources().getDrawable(R.mipmap.a12_default));
+				happy4.setImageDrawable(getResources().getDrawable(R.mipmap.a13_default));
+				break;
+			case 2:
+				happy1.setImageResource(R.mipmap.a23_default);
+				happy2.setImageDrawable(getResources().getDrawable(R.mipmap.a11));
+				happy3.setImageDrawable(getResources().getDrawable(R.mipmap.a12_default));
+				happy4.setImageDrawable(getResources().getDrawable(R.mipmap.a13_default));
+				break;
+			case 1:
+				happy1.setImageDrawable(getResources().getDrawable(R.mipmap.a23_default));
+				happy2.setImageDrawable(getResources().getDrawable(R.mipmap.a11_default));
+				happy3.setImageDrawable(getResources().getDrawable(R.mipmap.a12));
+				happy4.setImageDrawable(getResources().getDrawable(R.mipmap.a13_default));
+				break;
+			case 0:
+				happy1.setImageDrawable(getResources().getDrawable(R.mipmap.a23_default));
+				happy2.setImageDrawable(getResources().getDrawable(R.mipmap.a11_default));
+				happy3.setImageDrawable(getResources().getDrawable(R.mipmap.a12_default));
+				happy4.setImageDrawable(getResources().getDrawable(R.mipmap.a13));
+				break;
+			default:
+				break;
+		}
 
-    }
+	}
 	private void initViews() {
 		titleText=(EditText) findViewById(R.id.title);
 		contentText=(EditText) findViewById(R.id.content);
-        tipText = (TextView) findViewById(R.id.tips);
+		tipText = (TextView) findViewById(R.id.tips);
 
 		happy1 = (ImageView) findViewById(R.id.happy1);
 		happy2 = (ImageView) findViewById(R.id.happy2);
@@ -113,13 +113,13 @@ public class EditNegativeActivity extends AppCompatActivity implements TextWatch
 			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 			getSupportActionBar().setDisplayShowTitleEnabled(false);
 		}
-        mToolbar.setNavigationIcon(R.drawable.btn_back);
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+		mToolbar.setNavigationIcon(R.drawable.btn_back);
+		mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				onBackPressed();
+			}
+		});
 
 		mToolbar.setTitleMarginStart(0);
 
@@ -129,19 +129,19 @@ public class EditNegativeActivity extends AppCompatActivity implements TextWatch
 
 	//单击提交日记按钮时调用的方法
 	public void addOrupdate(View view){
-	    //步骤2：完成日记更新操作
+		//步骤2：完成日记更新操作
 		Diary diary = new Diary(titleText.getText().toString(),
 				contentText.getText().toString(),
 				DateTool.getCurrentTime(),happy);
-	    diaryDao=new DiaryDao(EditNegativeActivity.this);
-	    if(number==1){
-	    	diary.setId(this.getIntent().getExtras().getInt("id"));
+		diaryDao=new DiaryDao(EditNegativeActivity.this);
+		if(number==1){
+			diary.setId(this.getIntent().getExtras().getInt("id"));
 			diaryDao.update(diary);
 			finish();
-	    }else{
-		 diaryDao.save(diary);
-				finish();
-	    }
+		}else{
+			diaryDao.save(diary);
+			finish();
+		}
 	}
 
 	public void happySelect(View view) {
@@ -196,36 +196,62 @@ public class EditNegativeActivity extends AppCompatActivity implements TextWatch
 
 	@Override
 	public void onTextChanged(CharSequence s, int start, int before, int count) {
-        //tipText.setText(" 哼哧哼哧~~~");
+		//tipText.setText(" 哼哧哼哧~~~");
 	}
+
+	int posSize = 0;
+	int cogSize = 0;
+	int negSize = 0;
+	int totalSize = 0;
 
 	@Override
 	public void afterTextChanged( final Editable s) {
-        //Log.e("xxxxxxxxxxx",s.toString());
-        if (s == null || s.equals("")) return;
+		//Log.e("xxxxxxxxxxx",s.toString());
+		if (s == null || s.equals("")) return;
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                //每三个字更新一次
-              // if (s.length()% 3 != 0) return;
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				//每三个字更新一次
+				// if (s.length()% 3 != 0) return;
 
-                Double positiveRate = nlpService.positivePercentage(s.toString());
-                Double negativeRate = nlpService.negativePercentage(s.toString());
-                Double cognitiveRate = nlpService.cognitivePercentage(s.toString());
 
-                Log.e("xxxxxxxxxxxxx",positiveRate.toString()+"  "+negativeRate+"  "+cognitiveRate);
-                final StringBuffer feedback = Model.getFeedback(s.length(),positiveRate,negativeRate,cognitiveRate);
-                if (null == feedback) return;
+				totalSize = nlpService.totalSize(s.toString());
+				int currentPosSize = nlpService.positiveNum(s.toString());
+				int currentCogSize = nlpService.cognitiveNum(s.toString());
+				negSize = nlpService.negativeNum(s.toString());
 
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        tipText.setText(feedback);
-                    }
-                });
-            }
-        }).start();
+				if (currentPosSize>posSize){
+					Log.e("xxxxxxx","+1+1+1");
+				}
+				posSize = currentPosSize;
+				if (currentCogSize >cogSize){
+					Log.e("xxxxxxx","+1+1+1");
+				}
+				cogSize = currentCogSize;
+
+
+				//Double negativeRate = nlpService.negativePercentage(s.toString());
+				// Double positiveRate = nlpService.positivePercentage(s.toString());
+				//Double cognitiveRate = nlpService.cognitivePercentage(s.toString());
+				Double positiveRate = posSize * 1.0 / totalSize;
+				Double cognitiveRate = cogSize * 1.0 / totalSize;
+				Double negativeRate = negSize * 1.0 / totalSize;
+
+				Log.e("xxxxxxxxxxxxx",positiveRate.toString()+"  "+negativeRate+"  "+cognitiveRate);
+				Log.e("xxxxxwangliuping",posSize+"  "+negSize+"  "+cogSize);
+
+				final StringBuffer feedback = Model.getFeedback(s.length(),positiveRate,negativeRate,cognitiveRate);
+				if (null == feedback) return;
+
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						tipText.setText(feedback);
+					}
+				});
+			}
+		}).start();
 	}
 
 

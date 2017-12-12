@@ -31,7 +31,8 @@ public class Model {
         int lengthScore = 100;
         if (wordLength < 100) lengthScore = wordLength;
         double emotionScore = 3.5;
-        if ((positiveRate + cognitiveRate)*17.5>3.5) emotionScore = 3.5;
+        if ((positiveRate + cognitiveRate)*17.5<3.5)
+            emotionScore = (positiveRate + cognitiveRate)*17.5;
 
         grade = (lengthScore/100)*1.5 + emotionScore- negativeRate*1.5;
 
@@ -46,7 +47,7 @@ public class Model {
         }else {
             result = 0;
         }
-        Log.d(TAG,"grade="+result);
+        Log.d(TAG,"grade="+grade);
 
         String currentState = whoLow(wordLength,positiveRate,negativeRate,cognitiveRate);
        // if (currentState.equals(LastState)) return null;//取消注释，意味着，只有状态改变时，才更新tip
