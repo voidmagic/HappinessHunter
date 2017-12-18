@@ -244,6 +244,19 @@ public class EditPositiveActivity extends AppCompatActivity implements TextWatch
                 posSize = currentPosSize;
                 if (currentCogSize >cogSize){
                    // Log.e("xxxxxxx","+1+1+1");
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Log.e("xxxxxxx","+1+1+1");
+                            if (mHeartLayout != null){
+
+                                Log.e("xxxxxxx","+2222222");
+                                mHeartLayout.addFavor();
+                                //      mHeartLayout.addFavor();
+                                //   mHeartLayout.addFavor();
+                            }
+                        }
+                    });
                 }
                 cogSize = currentCogSize;
 

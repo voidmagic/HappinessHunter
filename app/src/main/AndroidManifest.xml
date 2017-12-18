@@ -14,7 +14,7 @@
         <activity android:name=".MainActivity">
 
         </activity>
-        <activity android:name=".activity.IndexActivity">
+        <activity android:name=".activity.IndexActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,15 +35,20 @@
             android:name=".activity.EditNegativeActivity" android:windowSoftInputMode="adjustPan|stateHidden"
             android:label="@string/title_activity_diary_add" >
         </activity>
+        <activity
+            android:name=".activity.EditActivity" android:windowSoftInputMode="adjustPan|stateHidden"
+            android:label="@string/title_activity_diary_add" >
+        </activity>
         <activity android:name=".activity.DiaryReviewActivity"
             android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
 
-        <activity android:name=".WordCloudActivity"/>
-        <activity android:name=".WordRecordListActivity"/>
-        <activity android:name=".activity.ListActivity"/>
-        <activity android:name=".activity.AlarmActivity"/>
+        <activity android:name=".WordCloudActivity" />
+        <activity android:name=".WordRecordListActivity" />
+        <activity android:name=".activity.ListActivity" />
+        <activity android:name=".activity.AlarmActivity" />
 
-        <receiver android:name=".activity.AlarmReceiver" android:process=":remote">
+
+        <receiver android:name=".activity.AlarmReceiver" android:process=":remote" >
 
         </receiver>
     </application>

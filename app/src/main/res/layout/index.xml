@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:background="@color/white">
 
-    <include layout="@layout/toolbar" />
+    <include layout="@layout/toolbar_main" />
 
 
     <RelativeLayout
@@ -24,7 +24,7 @@
             android:layout_height="100dp"
 
             android:layout_marginTop="40dp"
-            android:text="   今天是万圣节，大家都做了南瓜灯哦~O(∩_∩)O~"
+            android:text="   今天是双12，你买买买了么，哈哈~O(∩_∩)O~"
             android:textColor="@color/grey"
             android:padding="8dp"
             android:layout_marginLeft="200dp"

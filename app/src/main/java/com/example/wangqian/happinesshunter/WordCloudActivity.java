@@ -65,6 +65,7 @@ public class WordCloudActivity extends AppCompatActivity {
         filter.add("是");
         filter.add("在");
         filter.add("和");
+        filter.add("我");
         filter.add("得");
         filter.add("地");
         filter.add("哈");

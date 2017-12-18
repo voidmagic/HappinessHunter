@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HappinessCapturer</string>
+    <string name="app_name">MirrorU</string>
 
     <string name="button_show_word_cloud">Word Cloud</string>
     <string name="selected_word_as_param">WordSelected</string>
@@ -9,10 +9,10 @@
     <string name="menu_action_up_down">Up down</string>
     <string name="menu_action_up_down_stack">Up down stack</string>
     <string name="hello_world">Hello world!</string>
-    <string name="diary_add">幸福捕手</string>
+    <string name="diary_add">MirrorU</string>
     <string name="diary_delete">删除一篇日记</string>
-    <string name="label_title">日记标题</string>
-    <string name="label_content">日记内容</string>
+    <string name="label_title">Title</string>
+    <string name="label_content">content</string>
     <string name="button_confirm">完成</string>
     <string name="title_activity_diary_add">幸福捕手</string>
     <string name="action_settings">Settings</string>

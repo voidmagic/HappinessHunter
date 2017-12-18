@@ -8,7 +8,9 @@
         <!--<item name="colorAccent">@color/colorAccent</item>-->
     <!--</style>-->
     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
-        <item name="colorPrimary">@android:color/white</item>
+        <item name="colorPrimary">@color/main_color</item>
+    <item name="colorPrimaryDark">@color/main_color</item>
+
         <!-- Customize your theme here. -->
     </style>
     <!--<style name="CustomActionBarStyle" parent="@android:style/Widget.DeviceDefault.Light.ActionBar">-->

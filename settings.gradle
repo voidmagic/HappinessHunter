@@ -1,1 +1,1 @@
-include ':app', ':lib', ':cardstack'
+include ':app', ':lib', ':cardstack', ':library'

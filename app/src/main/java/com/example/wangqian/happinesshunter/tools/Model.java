@@ -146,7 +146,7 @@ public class Model {
                         str = new StringBuffer("你的感受是什么样的呢");
                         break;
                     default:
-                        str = new StringBuffer("事情发生的真正原因是什么");
+                        str = new StringBuffer("你的感受是什么样的呢");
                         break;
                 }
                 break;

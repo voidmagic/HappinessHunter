@@ -88,7 +88,7 @@ public class IndexActivity extends AppCompatActivity implements OnMenuItemClickL
     }
 
     private void initToolbar() {
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar_main);
         TextView mToolBarTextView = (TextView) findViewById(R.id.text_view_toolbar_title);
         setSupportActionBar(mToolbar);
         if (getSupportActionBar() != null) {
@@ -96,15 +96,9 @@ public class IndexActivity extends AppCompatActivity implements OnMenuItemClickL
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
-//        mToolbar.setNavigationIcon(R.drawable.btn_back);
-//        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onBackPressed();
-//            }
-//        });
+        mToolbar.setNavigationIcon(R.drawable.back_blue);
 
-        mToolBarTextView.setText(getResources().getString(R.string.app_name));
+      //  mToolBarTextView.setText(getResources().getString(R.string.app_name));
     }
 
 
@@ -127,14 +121,7 @@ public class IndexActivity extends AppCompatActivity implements OnMenuItemClickL
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onBackPressed() {
-        if (mMenuDialogFragment != null && mMenuDialogFragment.isAdded()) {
-            mMenuDialogFragment.dismiss();
-        } else {
-            finish();
-        }
-    }
+
     Intent intent;
     @Override
     public void onMenuItemClick(View clickedView, int position) {
@@ -210,7 +197,7 @@ public class IndexActivity extends AppCompatActivity implements OnMenuItemClickL
             public void onClick(View v) {
                 pwMyPopWindow.dismiss();
                 intent = new Intent();
-                intent.setClass(IndexActivity.this, EditNegativeActivity.class);
+                intent.setClass(IndexActivity.this, EditActivity.class);
                 startActivity(intent);
             }
         });

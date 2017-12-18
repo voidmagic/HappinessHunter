@@ -18,19 +18,27 @@ import java.util.Set;
 
 public class DemoNlpServiceImpl implements NlpService {
 
-    @Override
-    public List<String> segmentSentence(String sentence) {
+    public List<String> segmentSentenceCN(String sentence) {
         Log.e("segmentSentence",sentence);
         HttpRequest request =  HttpRequest.get("http://115.159.180.45:9000/segment/" + sentence, true);
         String jsonResponse = request.body();
         return JSON.parseArray(jsonResponse, String.class);
     }
+    @Override
+    public List<String> segmentSentence(String sentence) {
+        Log.e("segmentSentence",sentence);
+        HttpRequest request =  HttpRequest.get("http://115.159.180.45:9000/segment-en/" + sentence, true);
+        String jsonResponse = request.body();
+        return JSON.parseArray(jsonResponse, String.class);
+    }
+
 
     @Override
     public int emotionStrength(String sentence) {
 
         Log.e("emotionStrength",sentence);
-        HttpRequest request =  HttpRequest.get("http://115.159.180.45:9000/sentiment/" + sentence, true);
+        //HttpRequest request =  HttpRequest.get("http://115.159.180.45:9000/sentiment/" + sentence, true);
+        HttpRequest request =  HttpRequest.get("http://115.159.180.45:9000/sentiment-en/" + sentence, true);
         String jsonResponse = request.body();
         float s = JSON.parseObject(jsonResponse, Float.class) * 10;
         int s1 = 0;
@@ -70,6 +78,7 @@ public class DemoNlpServiceImpl implements NlpService {
         List<String> inputWords = segmentSentence(sentence);
 
 
+
         Set<String> positiveDict = HappinessHunterApplication.positiveWords;
 
         inputWords.retainAll(positiveDict);
@@ -91,6 +100,7 @@ public class DemoNlpServiceImpl implements NlpService {
     @Override
     public int positiveNum(String sentence) {
         List<String> inputWords = segmentSentence(sentence);
+        Log.e("xxxxxxxx positive",inputWords.size()+"" );
         int total = inputWords.size();
         Set<String> positiveDict = HappinessHunterApplication.positiveWords;
         inputWords.retainAll(positiveDict);
